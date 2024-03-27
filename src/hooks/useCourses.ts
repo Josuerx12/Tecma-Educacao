@@ -33,7 +33,23 @@ function useCourses() {
     }
   }
 
-  return { fetchMostRated, fetchByFilters };
+  async function fetchOneCourse(courseId: string): Promise<ICourses> {
+    try {
+      const formData = new FormData();
+      formData.append("token", token);
+      formData.append("course_id", courseId);
+      formData.append("include_topics", "1");
+
+      const payload = (await api.post("/api/course/get-courses", formData))
+        .data;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  return { fetchMostRated, fetchByFilters, fetchOneCourse };
 }
 
 export { useCourses };

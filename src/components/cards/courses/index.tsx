@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { ICourse } from "../../../interfaces/ICourses";
 
 const CoursesCard = ({ course }: { course: ICourse }) => {
+  const navigate = useNavigate();
   return (
     <div
+      onClick={() => navigate(`/curso/${course.course_id}`)}
       title="clique para ver detalhes do curso!"
       className="w-72 shadow flex flex-col gap-1 border border-red-100 rounded p-2 justify-between cursor-pointer relative group hover:border-red-500 transition-all ease-in-out duration-300"
     >

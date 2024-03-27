@@ -7,6 +7,7 @@ import { useAuth } from "./store/useAuth";
 import CoursesPage from "./pages/courses";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import CoursePage from "./pages/courses/course";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -25,6 +26,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cursos" element={<CoursesPage />} />
+        <Route path="/curso/:courseId" element={<CoursePage />} />
         <Route
           path="/auth/login"
           element={!user ? <Login /> : <Navigate to="/cursos" />}
