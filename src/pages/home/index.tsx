@@ -43,7 +43,7 @@ const HomePage = () => {
               >
                 <img
                   src={c.category_courses[0].course_slideshow[0]}
-                  className="absolute w-svw h-[450px] z-[-1] object-fit"
+                  className="absolute w-svw h-[450px] z-[-1] object-cover"
                   alt=""
                 />
                 <div className="w-11/12 md:w-3/4 py-5 md:py-10 m-auto text-white flex flex-col h-full justify-around">
