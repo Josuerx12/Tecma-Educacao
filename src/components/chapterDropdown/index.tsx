@@ -1,6 +1,6 @@
-import { FaArrowUp } from "react-icons/fa";
 import { ICourseChapter } from "../../interfaces/ICourses";
 import { useState } from "react";
+import { FaArrowDown } from "react-icons/fa6";
 
 const ChapterDropDown = ({
   chapter,
@@ -24,10 +24,10 @@ const ChapterDropDown = ({
           {index + 1}
         </span>{" "}
         {chapter.chapter_title}{" "}
-        <FaArrowUp
+        <FaArrowDown
           className={`${
-            isOpenDropdown && "rotate-0"
-          } rotate-180 transition-all ease-linear duration-100`}
+            isOpenDropdown && "rotate-180"
+          } transition-all ease-linear duration-100`}
         />
       </h3>
       <ul className={`${isOpenDropdown ? "relative" : "hidden"}`}>

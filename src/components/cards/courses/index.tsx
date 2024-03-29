@@ -2,9 +2,17 @@ import { ICourse } from "../../../interfaces/ICourses";
 import { FaStar } from "react-icons/fa";
 
 const CoursesCard = ({ course }: { course: ICourse }) => {
+  if (course.course_hours < 20) {
+    course.course_price = 39.9;
+  } else if (course.course_hours > 20 && course.course_hours <= 80) {
+    course.course_price = 97.0;
+  } else {
+    course.course_price = 499;
+  }
+
   return (
     <a
-      href={`/curso/${course.course_category_slug}/${course.course_id}`}
+      href={`/cursos/${course.course_category_slug}/${course.course_id}`}
       title="clique para ver detalhes do curso!"
       className="w-72 h-[450px] shadow flex flex-col  gap-1 border  rounded cursor-pointer relative group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
     >

@@ -19,14 +19,14 @@ const Navbar = () => {
   const { data } = useQuery("categories", fetchCategories);
 
   return (
-    <nav className=" flex gap-3 justify-between bg-white shadow-md p-5 items-center">
+    <nav className=" flex gap-3 justify-between bg-white shadow-md p-4 items-center">
       <button className="md:hidden text-2xl">
         <IoMenu />
       </button>
 
       <img
         onClick={() => navigate("/")}
-        className="w-44 cursor-pointer"
+        className="w-44 h-14 cursor-pointer object-cover"
         title="Unitec Educação - Pagina Inicial"
         src="/unitecLogo2.jpeg"
       />

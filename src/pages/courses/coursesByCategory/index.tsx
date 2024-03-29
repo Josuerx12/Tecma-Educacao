@@ -10,14 +10,17 @@ const CoursesByCategory = () => {
 
   const { fetchByCategoryCourses } = useCourses();
 
-  const { data, isLoading, refetch } = useQuery(
-    "coursesByCategory",
-    async () => await fetchByCategoryCourses(categorySlug ? categorySlug : "")
+  const { data, isLoading, refetch } = useQuery("coursesByCategory", () =>
+    fetchByCategoryCourses(categorySlug ? categorySlug : "")
   );
 
   useEffect(() => {
     refetch();
   }, [categorySlug]);
+
+  const nome = data ? [...data] : [];
+
+  nome?.sort((a, b) => b.course_rating - a.course_rating);
 
   return (
     <div className="flex-1">
@@ -29,7 +32,7 @@ const CoursesByCategory = () => {
           {isLoading ? (
             <Loading />
           ) : (
-            data?.map((course) => (
+            nome?.map((course) => (
               <CoursesCard key={course.course_id} course={course} />
             ))
           )}
