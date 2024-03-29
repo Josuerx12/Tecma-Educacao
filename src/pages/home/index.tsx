@@ -42,7 +42,7 @@ const HomePage = () => {
                 className={`w-full h-[450px] z-10 bg-black bg-opacity-20`}
               >
                 <img
-                  src={c.category_courses[0].course_slideshow[1]}
+                  src={c.category_courses[0].course_slideshow[0]}
                   className="absolute w-svw h-[450px] z-[-1] object-fit"
                   alt=""
                 />
@@ -71,7 +71,7 @@ const HomePage = () => {
       </div>
 
       <div className="mt-4 w-4/5 flex flex-col gap-6 m-auto">
-        <h3 className="text-center font-bold text-2xl text-dark">
+        <h3 className="text-center font-semibold text-3xl text-dark">
           Cursos mais procurados
         </h3>
         <div className="flex flex-wrap justify-center gap-8">
