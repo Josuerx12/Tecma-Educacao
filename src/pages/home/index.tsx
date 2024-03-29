@@ -42,14 +42,14 @@ const HomePage = () => {
                 className={`w-full h-[450px] z-10 bg-black bg-opacity-20`}
               >
                 <img
-                  src={c.category_courses[0].course_slideshow[0]}
-                  className="absolute w-svw h-[450px] z-[-1]"
+                  src={c.category_courses[0].course_slideshow[1]}
+                  className="absolute w-svw h-[450px] z-[-1] object-fit"
                   alt=""
                 />
                 <div className="w-11/12 md:w-3/4 py-5 md:py-10 m-auto text-white flex flex-col h-full justify-around">
                   <h3 className="font-semibold text-xl md:text-3xl">{slug}</h3>
 
-                  <p className="w-72 md:w-3/6 text-ellipsis overflow-hidden line-clamp-4 md:text-xl">
+                  <p className="w-72 md:w-3/6 text-ellipsis overflow-hidden line-clamp-4 md:text-xl text-justify">
                     {c.category_courses[0].course_description}
                   </p>
 
