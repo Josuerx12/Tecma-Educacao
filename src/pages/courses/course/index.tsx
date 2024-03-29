@@ -142,6 +142,13 @@ const CoursePage = () => {
           </div>
         </div>
       </div>
+      <div className="w-11/12 m-auto px-6 pb-3 flex flex-col">
+        <h3 className="text-2xl font-semibold">Cursos relacionados</h3>
+        <Slider {...settings} autoplay={false}>
+          <div>1</div>
+          <div>2</div>
+        </Slider>
+      </div>
     </div>
   );
 };

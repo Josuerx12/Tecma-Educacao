@@ -39,7 +39,7 @@ const HomePage = () => {
               <div
                 title="Clique em saiba mais para visualizar mais detalhes sobre o curso."
                 key={c.category_id}
-                className={`w-full h-[450px] z-10 bg-black bg-opacity-70`}
+                className={`w-full h-[450px] z-10 bg-black bg-opacity-20`}
               >
                 <img
                   src={c.category_courses[0].course_slideshow[0]}
