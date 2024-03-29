@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 const CoursesCard = ({ course }: { course: ICourse }) => {
   return (
     <a
-      href={`/cursos/${course.course_category_slug}/${course.course_id}`}
+      href={`/curso/${course.course_category_slug}/${course.course_id}`}
       title="clique para ver detalhes do curso!"
       className="w-72 h-[450px] shadow flex flex-col  gap-1 border  rounded cursor-pointer relative group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
     >

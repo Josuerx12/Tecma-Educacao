@@ -44,6 +44,23 @@ function useCourses() {
     }
   }
 
+  async function fetchByCategoryCourses(
+    categorySlug: string
+  ): Promise<ICourse[]> {
+    try {
+      const formData = new FormData();
+
+      formData.append("token", token);
+      formData.append("category_slug", categorySlug);
+
+      const payload = await api.post("/api/course/get-courses", formData);
+
+      return payload.data.COURSES;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
   async function fetchByFilters(filters: FormData): Promise<ICourses> {
     try {
       filters.append("token", token);
@@ -77,6 +94,7 @@ function useCourses() {
     fetchByFilters,
     fetchOneCourse,
     fetchRelatedCourses,
+    fetchByCategoryCourses,
   };
 }
 
