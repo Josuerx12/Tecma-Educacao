@@ -30,7 +30,7 @@ const Login = () => {
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
       <h3 className="text-xl text-center ">
         Autentique-se para acessar a plataforma da
-        <span className="text-red-600 font-semibold"> UNITEC!</span>
+        <span className="text-red-600 font-semibold"> UNITEC Educação!</span>
       </h3>
 
       <form
