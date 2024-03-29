@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from "../config/api";
 import { IAddress } from "../interfaces/IAddressesByCep";
-import { ICategories } from "../interfaces/ICategories";
+import { ICategories, ICategoriesWithCourses } from "../interfaces/ICategories";
 
 function useUtils() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
@@ -23,8 +23,26 @@ function useUtils() {
     formData.append("token", token);
 
     try {
-      const payload = (await api.post("	/api/category/get-categories", formData))
+      const payload = (await api.post("/api/category/get-categories", formData))
         .data.CATEGORIES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function fetchCategoriesWithCourses(): Promise<
+    ICategoriesWithCourses[]
+  > {
+    const formData = new FormData();
+
+    formData.append("token", token);
+
+    try {
+      const payload = (
+        await api.post("/api/course/get-categories-courses", formData)
+      ).data.CATEGORIES;
 
       return payload;
     } catch (error: any) {
@@ -1079,6 +1097,7 @@ function useUtils() {
     fetchCategories,
     countries,
     ocupationArea,
+    fetchCategoriesWithCourses,
   };
 }
 

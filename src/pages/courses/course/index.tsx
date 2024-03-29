@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useCourses } from "../../../hooks/useCourses";
 import { useQuery } from "react-query";
 import { FaCertificate, FaClock, FaStar } from "react-icons/fa";
-import Slider from "../../../components/slider";
+import Slider from "react-slick";
 
 const CoursePage = () => {
   const { courseId } = useParams();
@@ -23,58 +23,84 @@ const CoursePage = () => {
 
   const videoId = getYouTubeVideoId(data?.COURSES[0].course_video);
 
+  const settings = {
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    arrows: false,
+  };
+
   return (
-    <div className="flex-1">
-      <div className=" w-4/5 m-auto mt-6 flex gap-3 justify-center md:justify-between flex-wrap-reverse">
+    <div className=" flex-1 ">
+      <div className=" w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
         <div className="md:flex-1 basis-96 text-neutral-900 flex flex-col gap-6">
           <h2 className="text-2xl font-bold text-center">
             {data?.COURSES[0].course_title}
           </h2>
-          <div className="w-full md:w-[70%] mx-auto">
-            <Slider slides={data?.COURSES[0].course_slideshow} />
+
+          <Slider
+            {...settings}
+            className="w-full max-w-96 sm:max-w-[800px] mx-auto h-auto"
+          >
+            {data?.COURSES[0].course_slideshow.map((i) => (
+              <img src={i} />
+            ))}
+          </Slider>
+
+          <div className="flex flex-col gap-1">
+            <p>
+              <span className="font-bold">Descrição: </span>
+              {data?.COURSES[0].course_description}
+            </p>
+            <p>
+              <span className="mr-1 font-bold">Alunos:</span>
+              {data?.COURSES[0].course_students}.
+            </p>
+            <p className="flex gap-1">
+              <span className="font-bold">Avaliação: </span>
+              <div className="flex gap-1 items-center">
+                {data?.COURSES[0].course_rating &&
+                  data &&
+                  Array.from(
+                    Array(Math.round(data.COURSES[0].course_rating))
+                  ).map((_, i) => (
+                    <FaStar className="text-yellow-500" key={i} />
+                  ))}{" "}
+                <span>{data?.COURSES[0].course_rating}</span>
+              </div>
+            </p>
           </div>
-          <p>
-            Alunos:
-            <span className="font-bold">
-              {data?.COURSES[0].course_students}
-            </span>
-          </p>
-          <p className="flex gap-1">
-            <span>Avaliação: </span>
-            <div className="flex gap-1 items-center">
-              {data?.COURSES[0].course_rating &&
-                data &&
-                Array.from(
-                  Array(parseInt(String(data.COURSES[0].course_rating)))
-                ).map((_, i) => (
-                  <FaStar className="text-yellow-500" key={i} />
-                ))}{" "}
-              <span className="font-bold">
-                {data?.COURSES[0].course_rating}
-              </span>
-            </div>
-          </p>
 
           {data?.COURSES[0].course_teacher.teacher_name && (
-            <div className="relative bg-white w-fit p-3 rounded shadow">
+            <div className="gap-6 flex-wrap flex items-center bg-green-600 p-3 md:rounded shadow">
               <img
-                className="m-auto rounded"
+                className="m-auto rounded-full w-48 h-48 border-2 border-white"
                 src={data?.COURSES[0].course_teacher.teacher_image}
                 alt=""
               />
-              <p>
-                <span className="font-bold">Professor: </span>
-                {data?.COURSES[0].course_teacher.teacher_name}
-              </p>
-              <p>
-                <span className="font-bold">Descrição: </span>
-                {data?.COURSES[0].course_teacher.teacher_description}
-              </p>
+              <div className="text-neutral-50 flex basis-4/6 flex-grow flex-col gap-3">
+                <h3 className="text-3xl font-bold">
+                  <span className="text-2xl font-normal hidden md:inline-block">
+                    Sobre o autor:{" "}
+                  </span>
+                  {data?.COURSES[0].course_teacher.teacher_name}
+                </h3>
+                <p className="text-pretty flex-col flex">
+                  {data?.COURSES[0].course_teacher.teacher_description
+                    .split(".")
+                    .map((p) => (
+                      <span>{p}.</span>
+                    ))}
+                </p>
+              </div>
             </div>
           )}
         </div>
 
-        <div className="md:h-screen">
+        <div className="md:w-full lg:w-96">
           <div className="bg-white shadow p-2 rounded flex flex-col gap-3">
             <iframe
               src={`https://www.youtube.com/embed/${videoId}`}
@@ -82,7 +108,7 @@ const CoursePage = () => {
               frameBorder={0}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="rounded w-full md:w-96 h-64 "
+              className="rounded md:w-full lg:w-11/12 h-64 m-auto"
             ></iframe>
 
             <p className="text-3xl font-bold text-center text-neutral-900">

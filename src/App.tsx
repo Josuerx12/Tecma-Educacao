@@ -23,6 +23,7 @@ const App = () => {
   return (
     <main className="min-h-screen flex flex-col justify-between font-[Poppins] bg-neutral-100">
       <Navbar />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cursos" element={<CoursesPage />} />

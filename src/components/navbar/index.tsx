@@ -31,14 +31,14 @@ const Navbar = () => {
       <form className="flex-1 hidden md:flex items-center gap-1 justify-between">
         <select className="w-36 p-2 outline-red-500 border border-gray-200 rounded">
           <option value="">categorias</option>
-          {data?.map((category) => (
-            <option
-              key={category.category_id}
-              value={category.category_title.trim().replace("-", " ")}
-            >
-              {category.category_slug}
-            </option>
-          ))}
+          {data?.map((category) => {
+            const categoria = category.category_title.replace("-", " ");
+            return (
+              <option key={category.category_id} value={category.category_slug}>
+                {categoria}
+              </option>
+            );
+          })}
         </select>
         <input
           className="outline-red-400 border border-gray-200 rounded-full p-2 flex-1 "
