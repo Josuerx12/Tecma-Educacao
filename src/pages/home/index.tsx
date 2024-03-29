@@ -47,17 +47,19 @@ const HomePage = () => {
                   alt=""
                 />
                 <div className="w-11/12 md:w-3/4 py-5 md:py-10 m-auto text-white flex flex-col h-full justify-around">
-                  <h3 className="font-semibold text-xl md:text-3xl">{slug}</h3>
+                  <h3 className="font-normal drop-shadow-2xl text-xl md:text-3xl">
+                    {slug}
+                  </h3>
 
-                  <p className="w-72 md:w-3/6 text-ellipsis overflow-hidden line-clamp-4 md:text-xl text-justify">
-                    {c.category_courses[0].course_description}
+                  <p className="w-72 md:w-3/6 font-light  drop-shadow-2xl text-ellipsis overflow-hidden line-clamp-4 md:text-xl text-justify">
+                    {c.category_courses[0].course_description.replace(//g, " ")}
                   </p>
 
                   <button
                     onClick={() =>
                       navigate(`/curso/${c.category_courses[0].course_id}`)
                     }
-                    className="bg-neutral-50 md:text-xl text-neutral-800 font-semibold w-fit p-3  rounded"
+                    className="bg-neutral-50 md:text-xl text-neutral-800 font-normal w-fit p-3  rounded"
                   >
                     Saiba mais
                   </button>

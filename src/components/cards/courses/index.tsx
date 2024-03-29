@@ -8,7 +8,7 @@ const CoursesCard = ({ course }: { course: ICourse }) => {
     <div
       onClick={() => navigate(`/curso/${course.course_id}`)}
       title="clique para ver detalhes do curso!"
-      className="w-80 h-[450px] shadow flex flex-col  gap-1 border  rounded cursor-pointer relative group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
+      className="w-72 h-[450px] shadow flex flex-col  gap-1 border  rounded cursor-pointer relative group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
     >
       <img
         className="w-svw h-44 rounded-t"
