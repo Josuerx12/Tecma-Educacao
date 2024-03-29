@@ -4,10 +4,10 @@ import { HomePage } from "./pages/home";
 import { Register } from "./pages/auth/register";
 import { Login } from "./pages/auth/login";
 import { useAuth } from "./store/useAuth";
-import CoursesPage from "./pages/courses";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import CoursePage from "./pages/courses/course";
+import { CoursePage } from "./pages/courses/course";
+import { CoursesByCategory } from "./pages/courses/coursesByCategory";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -26,8 +26,11 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/cursos" element={<CoursesPage />} />
-        <Route path="/curso/:courseId" element={<CoursePage />} />
+        <Route
+          path="/cursos/:categorySlug/:courseId"
+          element={<CoursePage />}
+        />
+        <Route path="/cursos/:categorySlug/" element={<CoursesByCategory />} />
         <Route
           path="/auth/login"
           element={!user ? <Login /> : <Navigate to="/cursos" />}

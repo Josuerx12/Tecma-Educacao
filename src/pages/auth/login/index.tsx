@@ -58,16 +58,16 @@ const Login = () => {
         <Link
           to="/auth/recovery"
           title="Unitec - Recuperar senha"
-          className="text-blue-800 w-fit hover:text-blue-500"
+          className="text-blue-800 w-fit hover:text-blue-500 capitalize"
         >
-          Esqueci minha senha.
+          Esqueci a senha.
         </Link>
         <Link
           to="/auth/cadastre-se"
           title="Unitec - Cadastre-se"
-          className="text-blue-800 w-fit hover:text-blue-500"
+          className="text-blue-800 w-fit hover:text-blue-500 capitalize"
         >
-          Clique aqui para criar seu acesso.
+          Criar Acesso
         </Link>
 
         <button

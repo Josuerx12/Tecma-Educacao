@@ -1,18 +1,35 @@
 /* eslint-disable prefer-const */
 import { useParams } from "react-router-dom";
 import { useCourses } from "../../../hooks/useCourses";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { FaCertificate, FaClock, FaStar } from "react-icons/fa";
 import Slider from "react-slick";
+import { CoursesCard } from "../../../components/cards/courses";
+import { useEffect } from "react";
+import ChapterDropDown from "../../../components/chapterDropdown";
 
 const CoursePage = () => {
   const { courseId } = useParams();
 
-  const { fetchOneCourse } = useCourses();
+  const { fetchOneCourse, fetchRelatedCourses } = useCourses();
 
-  const { data } = useQuery("course", () =>
-    fetchOneCourse(courseId ? courseId : "")
+  const relatedCourses = useMutation("relatedCourses", fetchRelatedCourses);
+
+  const { data, refetch } = useQuery(
+    "course",
+    () => fetchOneCourse(courseId ? courseId : ""),
+    {
+      onSuccess: async (i) =>
+        await relatedCourses.mutateAsync({
+          categoryId: String(i.COURSES[0].course_category_id),
+          courseId: String(i.COURSES[0].course_id),
+        }),
+    }
   );
+
+  useEffect(() => {
+    refetch();
+  }, [courseId]);
 
   const getYouTubeVideoId = (url?: string) => {
     const match = url?.match(
@@ -36,17 +53,17 @@ const CoursePage = () => {
   return (
     <div className=" flex-1 ">
       <div className=" w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
-        <div className="md:flex-1 basis-96 text-neutral-900 flex flex-col gap-6">
-          <h2 className="text-2xl font-bold text-center">
+        <div className=" w-11/12 md:flex-1 basis-80 md:basis-96 text-neutral-900 flex flex-col gap-6">
+          <h2 className="text-3xl drop-shadow-lg text-center capitalize">
             {data?.COURSES[0].course_title}
           </h2>
 
           <Slider
             {...settings}
-            className="w-full max-w-96 sm:max-w-[800px] mx-auto h-auto"
+            className="w-full max-w-96 sm:max-w-[800px] mx-auto"
           >
             {data?.COURSES[0].course_slideshow.map((i) => (
-              <img src={i} />
+              <img src={i} key={i} />
             ))}
           </Slider>
 
@@ -74,8 +91,15 @@ const CoursePage = () => {
             </p>
           </div>
 
+          <div className="flex flex-col gap-3">
+            <h3 className="text-3xl drop-shadow-lg">Conteúdo do curso</h3>
+            {data?.COURSES[0].course_chapters.map((chapter, i) => (
+              <ChapterDropDown chapter={chapter} key={i} index={i} />
+            ))}
+          </div>
+
           {data?.COURSES[0].course_teacher.teacher_name && (
-            <div className="gap-6 flex-wrap flex items-center bg-green-600 p-3 md:rounded shadow">
+            <div className=" gap-6 flex-wrap flex items-center bg-green-600 p-3 md:rounded shadow">
               <img
                 className="m-auto rounded-full w-48 h-48 border-2 border-white"
                 src={data?.COURSES[0].course_teacher.teacher_image}
@@ -91,13 +115,21 @@ const CoursePage = () => {
                 <p className="text-pretty flex-col flex">
                   {data?.COURSES[0].course_teacher.teacher_description
                     .split(".")
-                    .map((p) => (
-                      <span>{p}.</span>
+                    .map((p, i) => (
+                      <span key={i}>{p}.</span>
                     ))}
                 </p>
               </div>
             </div>
           )}
+          <div className="pb-3 flex flex-col gap-8 ">
+            <h3 className="text-3xl  drop-shadow-lg">Cursos relacionados</h3>
+            <div className="flex gap-3 flex-wrap justify-between">
+              {relatedCourses.data?.map((rc) => (
+                <CoursesCard key={rc.course_id} course={rc} />
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="md:w-full lg:w-96">
@@ -142,15 +174,8 @@ const CoursePage = () => {
           </div>
         </div>
       </div>
-      <div className="w-11/12 m-auto px-6 pb-3 flex flex-col">
-        <h3 className="text-2xl font-semibold">Cursos relacionados</h3>
-        <Slider {...settings} autoplay={false}>
-          <div>1</div>
-          <div>2</div>
-        </Slider>
-      </div>
     </div>
   );
 };
 
-export default CoursePage;
+export { CoursePage };

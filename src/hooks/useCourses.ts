@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from "../config/api";
-import { ICourses } from "../interfaces/ICourses";
+import { ICourse, ICourses } from "../interfaces/ICourses";
 
 function useCourses() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
@@ -27,7 +27,7 @@ function useCourses() {
   }: {
     categoryId: string;
     courseId: string;
-  }): Promise<ICourses> {
+  }): Promise<ICourse[]> {
     try {
       const formData = new FormData();
 
@@ -35,8 +35,8 @@ function useCourses() {
       formData.append("category_id", categoryId);
       formData.append("course_id", courseId);
 
-      const payload = (await api.post("/api/course/get-related", formData))
-        .data;
+      const payload = (await api.post("/api/course/get-related", formData)).data
+        .COURSES;
 
       return payload;
     } catch (error: any) {

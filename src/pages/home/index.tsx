@@ -35,6 +35,7 @@ const HomePage = () => {
         <Slider {...settings}>
           {categories?.map((c) => {
             const slug = c.category_courses[0].course_title.replace(/-/g, " ");
+
             return (
               <div
                 title="Clique em saiba mais para visualizar mais detalhes sobre o curso."
@@ -57,7 +58,9 @@ const HomePage = () => {
 
                   <button
                     onClick={() =>
-                      navigate(`/curso/${c.category_courses[0].course_id}`)
+                      navigate(
+                        `/cursos/${c.category_slug}/${c.category_courses[0].course_id}`
+                      )
                     }
                     className="bg-neutral-50 md:text-xl text-neutral-800 font-normal w-fit p-3  rounded"
                   >
@@ -71,10 +74,10 @@ const HomePage = () => {
       </div>
 
       <div className="mt-4 w-4/5 flex flex-col gap-6 m-auto">
-        <h3 className="text-center font-semibold text-3xl text-dark">
+        <h3 className="text-center text-3xl text-dark drop-shadow-lg">
           Cursos mais procurados
         </h3>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex justify-between gap-8 flex-wrap items-center">
           {isLoading ? (
             <div> </div>
           ) : (

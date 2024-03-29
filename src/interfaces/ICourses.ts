@@ -25,6 +25,12 @@ export interface ICourse {
   course_teacher: CourseTeacher;
   course_price: number;
   course_user: CourseUser;
+  course_chapters: ICourseChapter[];
+}
+
+export interface ICourseChapter {
+  chapter_title: string;
+  chapter_topics: string[];
 }
 
 interface CourseTeacher {
