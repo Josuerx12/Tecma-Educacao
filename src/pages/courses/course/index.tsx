@@ -158,7 +158,7 @@ const CoursePage = () => {
               ))}
             </Slider>
 
-            <p className="text-3xl font-bold text-center text-neutral-900">
+            <p className="text-3xl font-bold text-center text-green-900">
               {data?.COURSES[0].course_price.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
