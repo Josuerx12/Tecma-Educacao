@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { CoursePage } from "./pages/courses/course";
 import { CoursesByCategory } from "./pages/courses/coursesByCategory";
+import Footer from "./components/footer";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -40,6 +41,7 @@ const App = () => {
           element={!user ? <Register /> : <Navigate to="/cursos" />}
         />
       </Routes>
+      <Footer />
     </main>
   );
 };

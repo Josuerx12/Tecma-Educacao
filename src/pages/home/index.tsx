@@ -67,7 +67,7 @@ const HomePage = () => {
                   alt=""
                 />
                 <div className="w-11/12 md:w-3/4 py-5 md:py-10 m-auto text-white flex flex-col h-full justify-around">
-                  <h3 className=" drop-shadow-3xl text-xl md:text-3xl">
+                  <h3 className=" drop-shadow-3xl text-xl md:text-3xl capitalize">
                     {c.title}
                   </h3>
 
@@ -91,7 +91,7 @@ const HomePage = () => {
       </div>
 
       <div className="mt-4 w-4/5 flex flex-col gap-6 m-auto">
-        <h3 className="text-center text-3xl text-dark drop-shadow-lg">
+        <h3 className="text-center text-3xl text-dark drop-shadow-lg capitalize">
           Cursos mais procurados
         </h3>
         <div className="flex justify-center gap-8 flex-wrap items-center">

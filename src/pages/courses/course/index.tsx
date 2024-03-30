@@ -51,7 +51,7 @@ const CoursePage = () => {
   };
 
   return (
-    <div className=" flex-1 ">
+    <div className=" flex-1">
       <div className="w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
         <div className=" w-11/12 md:flex-1 basis-80 md:basis-96 text-neutral-900 flex flex-col gap-6">
           <h2 className="text-3xl drop-shadow-lg text-center capitalize">
@@ -92,7 +92,9 @@ const CoursePage = () => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-3xl drop-shadow-lg">Conteúdo do curso</h3>
+            <h3 className="text-3xl drop-shadow-lg capitalize">
+              Conteúdo do curso
+            </h3>
             {data?.COURSES[0].course_chapters.map((chapter, i) => (
               <ChapterDropDown chapter={chapter} key={i} index={i} />
             ))}
@@ -122,9 +124,11 @@ const CoursePage = () => {
               </div>
             </div>
           )}
-          <h3 className="text-3xl drop-shadow-lg">Cursos relacionados</h3>
+          <h3 className="text-3xl drop-shadow-lg capitalize">
+            Cursos relacionados
+          </h3>
           <div className="relative w-full pb-3 flex flex-col ">
-            <div className="absolute flex gap-2 w-full top-0 right-0 overflow-auto">
+            <div className=" flex flex-wrap gap-2 w-full top-0 right-0 overflow-auto">
               {relatedCourses.data?.map((course) => (
                 <CoursesCard course={course} />
               ))}

@@ -40,29 +40,29 @@ const Navbar = () => {
           onClick={() => setIsOpenDropDown((prev) => !prev)}
         >
           Categorias
-          <ul
-            className={`${
-              isOpenDropDown ? "absolute" : "hidden"
-            } absolute z-50 m-auto top-14 rounded left-0 p-2 bg-neutral-100 w-64 h-96 flex flex-col gap-2 text-sm overflow-auto`}
-            onMouseLeave={() => setIsOpenDropDown(false)}
-          >
-            {data?.map((category) => (
-              <li
-                onClick={() => {
-                  navigate("/cursos/" + category.category_slug);
-                  setIsOpenDropDown(false);
-                }}
-                key={category.category_id}
-                className=" hover:bg-white w-full p-2 text-start"
-              >
-                {category.category_title}
-              </li>
-            ))}
-          </ul>
         </button>
+        <ul
+          className={`${
+            isOpenDropDown ? "absolute" : "hidden"
+          } absolute z-50 m-auto top-14 rounded shadow-lg left-0 p-2 bg-neutral-100 w-64 h-96 flex flex-col gap-2 text-sm overflow-auto`}
+          onMouseLeave={() => setIsOpenDropDown(false)}
+        >
+          {data?.map((category) => (
+            <li
+              onClick={() => {
+                navigate("/cursos/" + category.category_slug);
+                setIsOpenDropDown(false);
+              }}
+              key={category.category_id}
+              className=" hover:bg-white w-full p-2 text-start cursor-pointer"
+            >
+              {category.category_title}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <form className="flex-1 hidden md:flex items-center gap-1 justify-between">
+      <form className="w-2/4 hidden md:flex items-center gap-1 justify-between">
         <input
           className="outline-red-400 border border-gray-200 rounded-full p-2 flex-1 "
           type="text"
