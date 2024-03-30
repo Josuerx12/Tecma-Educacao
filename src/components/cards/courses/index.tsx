@@ -21,7 +21,7 @@ const CoursesCard = ({ course }: { course: ICourse }) => {
         src={course.course_slideshow[0]}
         alt={course.course_title}
       />
-      <div className="flex h-svh flex-col justify-between gap-3 p-3">
+      <div className="flex h-full flex-col justify-between gap-3 p-3">
         <div className="flex flex-col gap-3">
           <h3 className="font-bold text-wrap ">{course.course_title}</h3>
 
