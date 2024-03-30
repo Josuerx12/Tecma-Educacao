@@ -72,6 +72,21 @@ function useCourses() {
       throw error.response.data.ERROR;
     }
   }
+  async function fetchBySearch(search?: string): Promise<ICourse[]> {
+    try {
+      const formData = new FormData();
+      formData.append("token", token);
+
+      if (search && search.length > 0) formData.append("query", search);
+
+      const payload = (await api.post("/api/course/get-courses", formData)).data
+        .COURSES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
 
   async function fetchOneCourse(courseId: string): Promise<ICourses> {
     try {
@@ -95,6 +110,7 @@ function useCourses() {
     fetchOneCourse,
     fetchRelatedCourses,
     fetchByCategoryCourses,
+    fetchBySearch,
   };
 }
 

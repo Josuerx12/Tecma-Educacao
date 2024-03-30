@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { CoursePage } from "./pages/courses/course";
 import { CoursesByCategory } from "./pages/courses/coursesByCategory";
 import Footer from "./components/footer";
+import { CoursesBySearch } from "./pages/courses/courseBySearch";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -30,6 +31,10 @@ const App = () => {
         <Route
           path="/cursos/:categorySlug/:courseId"
           element={<CoursePage />}
+        />
+        <Route
+          path="/cursosPorPesquisa/:pesquisa"
+          element={<CoursesBySearch />}
         />
         <Route path="/cursos/:categorySlug" element={<CoursesByCategory />} />
         <Route

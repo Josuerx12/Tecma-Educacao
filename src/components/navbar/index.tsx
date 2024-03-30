@@ -6,9 +6,16 @@ import { useAuth } from "../../store/useAuth";
 import { useQuery } from "react-query";
 import { useUtils } from "../../hooks/useUtilities";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+type SearchProp = {
+  search: string;
+};
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const { register, handleSubmit } = useForm<SearchProp>();
 
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
 
@@ -17,6 +24,12 @@ const Navbar = () => {
   const { fetchCategories } = useUtils();
 
   const { data } = useQuery("categories", fetchCategories);
+
+  function onSearch(data: SearchProp) {
+    if (data.search) {
+      navigate("/cursosPorPesquisa/" + data.search);
+    }
+  }
 
   return (
     <nav className=" flex gap-3 justify-between bg-white shadow-md p-4 items-center">
@@ -62,8 +75,12 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <form className="w-2/4 hidden md:flex items-center gap-1 justify-between">
+      <form
+        onSubmit={handleSubmit(onSearch)}
+        className="w-2/4 hidden md:flex items-center gap-1 justify-between"
+      >
         <input
+          {...register("search")}
           className="outline-red-400 border border-gray-200 rounded-full p-2 flex-1 "
           type="text"
           placeholder="Pequise algum curso por seu nome!"

@@ -50,10 +50,18 @@ const CoursePage = () => {
     arrows: false,
   };
 
+  if (data) {
+    if (data.COURSES[0].course_hours <= 20) {
+      data.COURSES[0].course_price = 39.9;
+    } else {
+      data.COURSES[0].course_price = 97.0;
+    }
+  }
+
   return (
     <div className=" flex-1">
       <div className="w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
-        <div className=" w-11/12 md:flex-1 basis-80 md:basis-96 text-neutral-900 flex flex-col gap-6">
+        <div className=" md:max-w-[60%] w-full text-neutral-900 flex flex-col gap-6">
           <h2 className="text-3xl drop-shadow-lg text-center capitalize">
             {data?.COURSES[0].course_title}
           </h2>
@@ -64,7 +72,7 @@ const CoursePage = () => {
             frameBorder={0}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="rounded md:w-full h-96 md:h-[500px] m-auto"
+            className="rounded w-full h-96 md:h-[500px] m-auto"
           ></iframe>
 
           <div className="flex flex-col gap-1">
@@ -91,14 +99,16 @@ const CoursePage = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h3 className="text-3xl drop-shadow-lg capitalize">
-              Conteúdo do curso
-            </h3>
-            {data?.COURSES[0].course_chapters.map((chapter, i) => (
-              <ChapterDropDown chapter={chapter} key={i} index={i} />
-            ))}
-          </div>
+          {data?.COURSES[0].course_chapters && (
+            <div className="flex flex-col gap-3">
+              <h3 className="text-3xl drop-shadow-lg capitalize">
+                Conteúdo do curso
+              </h3>
+              {data?.COURSES[0].course_chapters.map((chapter, i) => (
+                <ChapterDropDown chapter={chapter} key={i} index={i} />
+              ))}
+            </div>
+          )}
 
           {data?.COURSES[0].course_teacher.teacher_name && (
             <div className=" gap-6 flex-wrap flex items-center bg-green-600 p-3 md:rounded shadow">
@@ -124,11 +134,12 @@ const CoursePage = () => {
               </div>
             </div>
           )}
-          <h3 className="text-3xl drop-shadow-lg capitalize">
-            Cursos relacionados
-          </h3>
-          <div className="relative w-full pb-3 flex flex-col ">
-            <div className=" flex flex-wrap gap-2 w-full top-0 right-0 overflow-auto">
+
+          <div className=" w-full pb-3 flex flex-col gap-3">
+            <h3 className="text-3xl text-center md:text-start drop-shadow-lg capitalize">
+              Cursos relacionados
+            </h3>
+            <div className="flex justify-center md:justify-normal flex-wrap md:flex-nowrap gap-4 w-full  overflow-auto py-4">
               {relatedCourses.data?.map((course) => (
                 <CoursesCard course={course} />
               ))}

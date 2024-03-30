@@ -13,12 +13,12 @@ const Footer = () => {
         />
         <div className="flex flex-col gap-3 sm:mt-[-150px] p-3">
           <h2 className="text-3xl ">Baixe o App</h2>
-          <p className="w-96">
+          <p className="max-w-96 w-full">
             Com o nosso app, é possível acessar todos os seus cursos e estudar
             de qualquer lugar com seu celular ou tablet.
           </p>
           <p>Grátis, disponível para Android e iOS.</p>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 flex-wrap items-center">
             <a
               href="https://play.google.com/store/apps/details?id=br.com.iped.meuscursos.novo"
               target="_blank"
@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-6 flex justify-between">
+      <div className="w-full p-6 flex justify-between flex-wrap">
         <form className="flex flex-col gap-1">
           <label className="text-sm text-neutral-500">
             Conferir autenticidade do certificado:
