@@ -52,7 +52,7 @@ const CoursePage = () => {
 
   return (
     <div className=" flex-1 ">
-      <div className=" w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
+      <div className="w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
         <div className=" w-11/12 md:flex-1 basis-80 md:basis-96 text-neutral-900 flex flex-col gap-6">
           <h2 className="text-3xl drop-shadow-lg text-center capitalize">
             {data?.COURSES[0].course_title}
@@ -122,17 +122,17 @@ const CoursePage = () => {
               </div>
             </div>
           )}
-          <div className="pb-3 flex flex-col gap-8 ">
-            <h3 className="text-3xl  drop-shadow-lg">Cursos relacionados</h3>
-            <div className="flex gap-3 flex-wrap justify-between">
-              {relatedCourses.data?.map((rc) => (
-                <CoursesCard key={rc.course_id} course={rc} />
+          <h3 className="text-3xl drop-shadow-lg">Cursos relacionados</h3>
+          <div className="relative w-full pb-3 flex flex-col ">
+            <div className="absolute flex gap-2 w-full top-0 right-0 overflow-auto">
+              {relatedCourses.data?.map((course) => (
+                <CoursesCard course={course} />
               ))}
             </div>
           </div>
         </div>
 
-        <div className="w-full lg:w-96">
+        <div className="w-full md:w-96">
           <div className="bg-white shadow p-2 rounded flex flex-col gap-3">
             <Slider
               {...settings}

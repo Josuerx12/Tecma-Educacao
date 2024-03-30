@@ -94,7 +94,7 @@ const HomePage = () => {
         <h3 className="text-center text-3xl text-dark drop-shadow-lg">
           Cursos mais procurados
         </h3>
-        <div className="flex justify-between gap-8 flex-wrap items-center">
+        <div className="flex justify-center gap-8 flex-wrap items-center">
           {isLoading ? (
             <div> </div>
           ) : (

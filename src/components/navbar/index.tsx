@@ -37,6 +37,7 @@ const Navbar = () => {
           type="button"
           onMouseEnter={() => setIsOpenDropDown(true)}
           onTouchStart={() => setIsOpenDropDown(true)}
+          onClick={() => setIsOpenDropDown((prev) => !prev)}
         >
           Categorias
           <ul
@@ -52,7 +53,7 @@ const Navbar = () => {
                   setIsOpenDropDown(false);
                 }}
                 key={category.category_id}
-                className=" hover:bg-white w-full p-2"
+                className=" hover:bg-white w-full p-2 text-start"
               >
                 {category.category_title}
               </li>

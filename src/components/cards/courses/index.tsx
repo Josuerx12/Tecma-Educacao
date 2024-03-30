@@ -14,7 +14,7 @@ const CoursesCard = ({ course }: { course: ICourse }) => {
     <a
       href={`/cursos/${course.course_category_slug}/${course.course_id}`}
       title="clique para ver detalhes do curso!"
-      className="w-72 h-[450px] shadow flex flex-col  gap-1 border  rounded cursor-pointer relative group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
+      className="min-w-72 w-72 h-[450px] shadow flex flex-col gap-1 border rounded cursor-pointer group opacity-85 hover:opacity-100 transition-all ease-in-out duration-300"
     >
       <img
         className="w-svw h-44 rounded-t"
