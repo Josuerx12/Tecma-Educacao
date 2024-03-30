@@ -23,7 +23,7 @@ const CoursesCard = ({ course }: { course: ICourse }) => {
       />
       <div className="flex h-full flex-col justify-between gap-3 p-3">
         <div className="flex flex-col gap-3">
-          <h3 className="font-bold text-wrap ">{course.course_title}</h3>
+          <h3 className="font-bold text-wrap">{course.course_title}</h3>
 
           <p className="line-clamp-3 overflow-hidden text-ellipsis text-justify">
             {course.course_description.replace(//g, " ")}

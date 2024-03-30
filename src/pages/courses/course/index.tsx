@@ -58,14 +58,14 @@ const CoursePage = () => {
             {data?.COURSES[0].course_title}
           </h2>
 
-          <Slider
-            {...settings}
-            className="w-full max-w-96 sm:max-w-[800px] mx-auto"
-          >
-            {data?.COURSES[0].course_slideshow.map((i) => (
-              <img src={i} key={i} />
-            ))}
-          </Slider>
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title="YouTube video player"
+            frameBorder={0}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="rounded md:w-full h-96 md:h-[500px] m-auto"
+          ></iframe>
 
           <div className="flex flex-col gap-1">
             <p>
@@ -132,16 +132,16 @@ const CoursePage = () => {
           </div>
         </div>
 
-        <div className="md:w-full lg:w-96">
+        <div className="w-full lg:w-96">
           <div className="bg-white shadow p-2 rounded flex flex-col gap-3">
-            <iframe
-              src={`https://www.youtube.com/embed/${videoId}`}
-              title="YouTube video player"
-              frameBorder={0}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded md:w-full lg:w-11/12 h-64 m-auto"
-            ></iframe>
+            <Slider
+              {...settings}
+              className="w-full max-w-96 sm:max-w-[800px] mx-auto"
+            >
+              {data?.COURSES[0].course_slideshow.map((i) => (
+                <img src={i} key={i} />
+              ))}
+            </Slider>
 
             <p className="text-3xl font-bold text-center text-neutral-900">
               {data?.COURSES[0].course_price.toLocaleString("pt-BR", {
