@@ -1,12 +1,13 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaUser } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/useAuth";
 import { useQuery } from "react-query";
 import { useUtils } from "../../hooks/useUtilities";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaTicket } from "react-icons/fa6";
 
 type SearchProp = {
   search: string;
@@ -28,6 +29,7 @@ const Navbar = () => {
   function onSearch(data: SearchProp) {
     if (data.search) {
       navigate("/cursosPorPesquisa/" + data.search);
+      setIsOpenDropDown(false);
     }
   }
 
@@ -97,9 +99,9 @@ const Navbar = () => {
         <button className="md:hidden text-neutral-900">
           <FaSearch />
         </button>
-        <button className="md:mx-4">
+        <Link to="/carrinho" className="md:mx-4">
           <HiOutlineShoppingCart className="text-2xl text-neutral-900" />
-        </button>
+        </Link>
       </ul>
 
       <ul
@@ -107,17 +109,17 @@ const Navbar = () => {
       >
         <li
           title="Unitec - Fazer Login"
-          onClick={() => navigate("/auth/login")}
-          className="border border-neutral-900 p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
+          onClick={() => navigate("/resgatar/cupom")}
+          className="border border-neutral-900 p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex gap-2 items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
         >
-          Fazer login
+          <FaTicket /> Resgatar Código
         </li>
         <li
-          title="Unitec - Cadastrar-se"
-          onClick={() => navigate("/auth/cadastre-se")}
-          className="border border-neutral-900 p-2 font-semibold transition ease-in-out duration-100 bg-neutral-900 text-white text-sm flex items-center cursor-pointer hover:bg-neutral-800"
+          title="Unitec - Acesse"
+          onClick={() => navigate("/auth/login")}
+          className="border border-neutral-900 p-2 font-semibold transition ease-in-out gap-2 duration-100 bg-neutral-900 text-white text-sm flex items-center cursor-pointer hover:bg-neutral-800"
         >
-          Cadastre-se
+          <FaUser /> Acessar
         </li>
       </ul>
     </nav>

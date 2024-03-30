@@ -8,7 +8,10 @@ const Register = () => {
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
       <h3 className="text-xl text-center ">
         Cadastre-se para acessar a plataforma da
-        <span className="text-red-800 font-semibold"> UNITEC Educação!</span>
+        <span className="text-red-800 font-semibold uppercase">
+          {" "}
+          UNITEC Educação!
+        </span>
       </h3>
 
       <form className="min-w-96 rounded-lg p-3 flex flex-col gap-3">

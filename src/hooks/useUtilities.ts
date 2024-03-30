@@ -3,6 +3,29 @@ import { api } from "../config/api";
 import { IAddress } from "../interfaces/IAddressesByCep";
 import { ICategories, ICategoriesWithCourses } from "../interfaces/ICategories";
 
+export interface IClaimCouponResponse {
+  STATE: number;
+  SUCCESS: string;
+  ITEMS: string[];
+  USER_COMPANY: UserCompany;
+}
+
+interface UserCompany {
+  company_id: number;
+  company_name: string;
+  company_url: string;
+  company_logo: string;
+  company_header_color: string;
+  company_categories_id: string;
+  company_resources: string[];
+}
+
+export type ClaimCouponCredentials = {
+  coupon: string;
+  user_email: string;
+  user_cpf: string;
+};
+
 function useUtils() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
 
@@ -43,6 +66,26 @@ function useUtils() {
       const payload = (
         await api.post("/api/course/get-categories-courses", formData)
       ).data.CATEGORIES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function claimCoupon(
+    credentials: ClaimCouponCredentials
+  ): Promise<IClaimCouponResponse> {
+    const formData = new FormData();
+
+    formData.append("token", token);
+    formData.append("coupon", credentials.coupon);
+    formData.append("user_email", credentials.user_email);
+    formData.append("user_cpf", credentials.user_cpf);
+
+    try {
+      const payload = (await api.post("/api/coupon/redeem-login", formData))
+        .data;
 
       return payload;
     } catch (error: any) {
@@ -1098,6 +1141,7 @@ function useUtils() {
     countries,
     ocupationArea,
     fetchCategoriesWithCourses,
+    claimCoupon,
   };
 }
 

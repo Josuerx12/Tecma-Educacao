@@ -30,7 +30,10 @@ const Login = () => {
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
       <h3 className="text-xl text-center ">
         Autentique-se para acessar a plataforma da
-        <span className="text-red-600 font-semibold"> UNITEC Educação!</span>
+        <span className="text-red-600 font-semibold uppercase">
+          {" "}
+          UNITEC Educação!
+        </span>
       </h3>
 
       <form
@@ -62,13 +65,6 @@ const Login = () => {
         >
           Esqueci a senha.
         </Link>
-        <Link
-          to="/auth/cadastre-se"
-          title="Unitec - Cadastre-se"
-          className="text-blue-800 w-fit hover:text-blue-500 capitalize"
-        >
-          Criar Acesso
-        </Link>
 
         <button
           disabled={isLoading}
@@ -77,6 +73,16 @@ const Login = () => {
           Fazer login
         </button>
       </form>
+
+      <div className="flex flex-col p-4 w-full justify-center items-center gap-3">
+        <h4 className="text-xl drop-shadow-lg">Ainda não tem uma conta?</h4>
+        <Link
+          className="bg-cyan-600 hover:bg-cyan-700 text-white py-3 px-4 rounded text-lg"
+          to="/auth/cadastre-se"
+        >
+          Matricule-se
+        </Link>
+      </div>
     </div>
   );
 };

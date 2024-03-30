@@ -110,9 +110,13 @@ const Footer = () => {
             Conferir autenticidade do certificado:
           </label>
           <div className="flex">
-            <input type="text" className="border shadow-sm p-1" />
+            <input
+              placeholder="Digite o numero do certificado"
+              type="text"
+              className="border shadow-sm p-1 "
+            />
             <button className="bg-neutral-200 border border-neutral-500 p-1">
-              Consultar Certificado
+              Consultar
             </button>
           </div>
         </form>

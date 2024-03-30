@@ -10,6 +10,9 @@ import { CoursePage } from "./pages/courses/course";
 import { CoursesByCategory } from "./pages/courses/coursesByCategory";
 import Footer from "./components/footer";
 import { CoursesBySearch } from "./pages/courses/courseBySearch";
+import Recovery from "./pages/auth/recovery";
+import ClaimCoupon from "./pages/claimCoupon";
+import CartPage from "./pages/cart";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -32,6 +35,7 @@ const App = () => {
           path="/cursos/:categorySlug/:courseId"
           element={<CoursePage />}
         />
+        <Route path="/carrinho" element={<CartPage />} />
         <Route
           path="/cursosPorPesquisa/:pesquisa"
           element={<CoursesBySearch />}
@@ -40,6 +44,15 @@ const App = () => {
         <Route
           path="/auth/login"
           element={!user ? <Login /> : <Navigate to="/cursos" />}
+        />
+
+        <Route
+          path="/auth/recovery"
+          element={!user ? <Recovery /> : <Navigate to="/cursos" />}
+        />
+        <Route
+          path="/resgatar/cupom"
+          element={user ? <ClaimCoupon /> : <Navigate to="/auth/login" />}
         />
         <Route
           path="/auth/cadastre-se"
