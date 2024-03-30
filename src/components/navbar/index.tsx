@@ -104,9 +104,7 @@ const Navbar = () => {
         </Link>
       </ul>
 
-      <ul
-        className={`hidden md:${user ? "hidden" : "flex"} gap-2 items-center`}
-      >
+      <ul className={`hidden md:flex gap-2 items-center`}>
         <li
           title="Unitec - Fazer Login"
           onClick={() => navigate("/resgatar/cupom")}
@@ -117,7 +115,9 @@ const Navbar = () => {
         <li
           title="Unitec - Acesse"
           onClick={() => navigate("/auth/login")}
-          className="border border-neutral-900 p-2 font-semibold transition ease-in-out gap-2 duration-100 bg-neutral-900 text-white text-sm flex items-center cursor-pointer hover:bg-neutral-800"
+          className={`border   border-neutral-900 p-2 font-semibold transition ease-in-out gap-2 duration-100 bg-neutral-900 text-white text-sm flex items-center cursor-pointer hover:bg-neutral-800 ${
+            user && "hidden"
+          }`}
         >
           <FaUser /> Acessar
         </li>
