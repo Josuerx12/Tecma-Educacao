@@ -109,13 +109,13 @@ const Footer = () => {
           <label className="text-sm text-neutral-500">
             Conferir autenticidade do certificado:
           </label>
-          <div className="flex">
+          <div className="flex flex-wrap">
             <input
               placeholder="Digite o numero do certificado"
               type="text"
-              className="border shadow-sm p-1 "
+              className="border shadow-sm p-1 basis-36 flex-grow"
             />
-            <button className="bg-neutral-200 border border-neutral-500 p-1">
+            <button className="bg-neutral-200 border border-neutral-500 p-1 flex-grow">
               Consultar
             </button>
           </div>
