@@ -142,7 +142,7 @@ const Navbar = () => {
                   type="text"
                   {...register("search")}
                   required
-                  className="p-1 shadow flex-1 rounded"
+                  className="p-1 shadow flex-1 rounded basis-52 flex-grow"
                   placeholder="Pesquise por um curso!"
                 />
                 <button className="text-white bg-neutral-900 p-2 rounded-full">
