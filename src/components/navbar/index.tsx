@@ -129,8 +129,8 @@ const Navbar = () => {
         </li>
       </ul>
       <div
-        className={`absolute h-full w-full bg-neutral-100 z-[999] top-[86px] ${
-          openMobile ? "left-0" : "left-[-999px]"
+        className={`absolute h-full bg-neutral-100 z-[999] top-[86px] ${
+          openMobile ? "left-0 w-full" : "left-[-999px]"
         } transition-all duration-300 ease-in-out`}
       >
         <div className="p-4 flex flex-col gap-6">
@@ -155,7 +155,7 @@ const Navbar = () => {
           {openMobile && (
             <div className="">
               <button
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 bg-neutral-300 p-2 rounded w-full justify-center"
                 type="button"
                 onClick={() => setIsOpenDropDown((prev) => !prev)}
               >
