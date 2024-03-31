@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-6 flex justify-between flex-wrap">
+      <div className="w-full p-6 flex justify-between flex-wrap gap-4">
         <form className="flex flex-col gap-1">
           <label className="text-sm text-neutral-500">
             Conferir autenticidade do certificado:
