@@ -3,6 +3,7 @@ export interface IAuthPayload {
   USER_TOKEN: string;
   USER_TYPE: number;
   USER_COMPANY: UserCompany;
+  ERROR?: string;
 }
 
 interface UserCompany {

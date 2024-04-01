@@ -54,7 +54,7 @@ export const useAuth = create<States & Actions>((set) => ({
       formData.append("user_occupation", credentials.user_occupation);
       formData.append("user_country", credentials.user_country);
 
-      const payload = (await api.post("/api/user/login", formData)).data;
+      const payload = (await api.post("/api/user/signup", formData)).data;
 
       Cookies.set("refreshToken", payload.USER_TOKEN);
       Cookies.set("user", payload.USER_ID);

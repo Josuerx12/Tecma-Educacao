@@ -11,9 +11,11 @@ const Register = () => {
 
   const { register, reset, handleSubmit } = useForm<RegisterCredentials>();
 
-  const { mutateAsync } = useMutation("registerUser", registerUser, {
-    onSuccess: () => {
-      reset();
+  const { mutateAsync, data } = useMutation("registerUser", registerUser, {
+    onSuccess: (data) => {
+      if (!data.ERROR) {
+        reset();
+      }
     },
   });
 
@@ -106,7 +108,12 @@ const Register = () => {
         >
           Já possuo uma conta, fazer login.
         </Link>
-
+        {data?.ERROR && (
+          <p className="w-full bg-red-200 text-red-600">
+            <span className="font-bold text-red-950">Error:</span>
+            {data.ERROR}
+          </p>
+        )}
         <button className="bg-red-500 p-2 rounded font-semibold transition ease-in-out duration-100 text-white hover:bg-red-600">
           Cadastre-se
         </button>

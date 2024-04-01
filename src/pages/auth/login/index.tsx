@@ -11,8 +11,12 @@ type credentials = {
 const Login = () => {
   const { login, getUser } = useAuth();
 
-  const { mutateAsync, isLoading } = useMutation("login", login, {
-    onSuccess: () => Promise.all([getUser()]),
+  const { mutateAsync, isLoading, data } = useMutation("login", login, {
+    onSuccess: (data) => {
+      if (!data.ERROR) {
+        getUser();
+      }
+    },
   });
 
   const { register, handleSubmit } = useForm<credentials>();
@@ -65,6 +69,13 @@ const Login = () => {
         >
           Esqueci a senha.
         </Link>
+
+        {data?.ERROR && (
+          <p className="w-full bg-red-200 text-red-600">
+            <span className="font-bold text-red-950">Error:</span>
+            {data.ERROR}
+          </p>
+        )}
 
         <button
           disabled={isLoading}
