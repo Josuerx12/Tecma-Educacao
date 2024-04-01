@@ -31,11 +31,12 @@ const ChapterDropDown = ({
         />
       </h3>
       <ul className={`${isOpenDropdown ? "relative" : "hidden"}`}>
-        {chapter.chapter_topics.map((topics, i) => (
-          <li className="ml-2 text-neutral-950" key={i}>
-            <span className="text-neutral-600">Aula {i + 1}</span> {topics}
-          </li>
-        ))}
+        {chapter.chapter_topics &&
+          chapter.chapter_topics.map((topics, i) => (
+            <li className="ml-2 text-neutral-950" key={i}>
+              <span className="text-neutral-600">Aula {i + 1}</span> {topics}
+            </li>
+          ))}
       </ul>
     </div>
   );

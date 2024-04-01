@@ -3,9 +3,14 @@ import { useCourses } from "../../hooks/useCourses";
 import { CoursesCard } from "../../components/cards/courses";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../store/useCart";
 
 const HomePage = () => {
   const { fetchMostRated } = useCourses();
+
+  const { addCart } = useCart();
+
+  const navigate = useNavigate();
 
   const homeSlide = [
     {
@@ -34,8 +39,6 @@ const HomePage = () => {
     },
   ];
 
-  const navigate = useNavigate();
-
   const { data, isLoading } = useQuery("relevanceCourses", fetchMostRated);
 
   const settings = {
@@ -51,7 +54,7 @@ const HomePage = () => {
   data?.COURSES.sort((a, b) => b.course_rating - a.course_rating);
 
   return (
-    <div className="flex-1 flex flex-col pb-10 gap-3">
+    <div className="flex-1 flex flex-col gap-3">
       <div className={`w-full m-auto`}>
         <Slider {...settings}>
           {homeSlide?.map((c) => {
@@ -102,6 +105,70 @@ const HomePage = () => {
               <CoursesCard key={course.course_id} course={course} />
             ))
           )}
+        </div>
+      </div>
+      <div className="bg-cyan-500 text-white p-5 items-center flex flex-col gap-8 ">
+        <h3 className="text-2xl drop-shadow-lg capitalize">
+          Conheça o plano ilimitado
+        </h3>
+
+        <div className="flex  flex-wrap gap-3">
+          <img
+            src="https://www.sie.com.br/marketplace/img/destaque.jpg"
+            alt="pessoa"
+            className="w-64 h-64 rounded-full m-auto md:m-0"
+          />
+
+          <div className="basis-96 max-w-[1000px] flex-grow flex flex-col gap-6">
+            <p className="text-justify">
+              É muito simples: Você acessa tudo que quiser e a hora que quiser,
+              tudo de forma ilimitada. Pode assistir uma aula hoje, outra amanhã
+              ou várias hoje e várias amanhã. É possível assistir do seu celular
+              pelo nosso app.
+            </p>
+            <p className="text-justify">
+              Todos os cursos que são 100% em vídeo aulas!
+              <br />
+              Todos os cursos possuem certificado que podem ser impressos
+              gratuitamente.
+            </p>
+            <p className="flex flex-col gap-2">
+              <span>Por Apenas</span>
+              <span className="font-bold text-2xl">
+                18x de {""}
+                {Number(27.77).toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </span>
+              <span>
+                ou{" "}
+                {Number(499.9).toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}{" "}
+                à vista
+              </span>
+            </p>
+
+            <button
+              onClick={() => {
+                addCart({
+                  courseId: "0",
+                  courseName: "Plano Ilimitado - Acesso a todos os cursos",
+                  duration: "em 1 ano",
+                  startAt: "Imadiato",
+                  courseImg:
+                    "https://www.iped.com.br/img/cursos/imagem-cursos/0.jpg",
+                  value: 499.9,
+                });
+                navigate("/carrinho");
+              }}
+              className="p-4 bg-cyan-100 w-fit text-neutral-700 font-semibold text-lg rounded"
+            >
+              Quero esse plano
+            </button>
+          </div>
         </div>
       </div>
     </div>

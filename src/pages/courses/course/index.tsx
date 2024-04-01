@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCourses } from "../../../hooks/useCourses";
 import { useMutation, useQuery } from "react-query";
 import { FaCertificate, FaClock, FaStar } from "react-icons/fa";
@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { CoursesCard } from "../../../components/cards/courses";
 import { useEffect } from "react";
 import ChapterDropDown from "../../../components/chapterDropdown";
+import { useCart } from "../../../store/useCart";
 
 const CoursePage = () => {
   const { courseId } = useParams();
@@ -58,6 +59,10 @@ const CoursePage = () => {
     }
   }
 
+  const { addCart } = useCart();
+
+  const navigate = useNavigate();
+
   return (
     <div className=" flex-1">
       <div className="w-11/12 m-auto flex gap-3 justify-center p-6 flex-wrap-reverse">
@@ -84,7 +89,7 @@ const CoursePage = () => {
               <span className="mr-1 font-bold">Alunos:</span>
               {data?.COURSES[0].course_students}.
             </p>
-            <p className="flex gap-1">
+            <div className="flex gap-1">
               <span className="font-bold">Avaliação: </span>
               <div className="flex gap-1 items-center">
                 {data?.COURSES[0].course_rating &&
@@ -96,7 +101,7 @@ const CoursePage = () => {
                   ))}{" "}
                 <span>{data?.COURSES[0].course_rating}</span>
               </div>
-            </p>
+            </div>
           </div>
 
           {data?.COURSES[0].course_chapters && (
@@ -141,7 +146,7 @@ const CoursePage = () => {
             </h3>
             <div className="flex justify-center md:justify-normal flex-wrap md:flex-nowrap gap-4 w-full  overflow-auto py-4">
               {relatedCourses.data?.map((course) => (
-                <CoursesCard course={course} />
+                <CoursesCard key={course.course_id} course={course} />
               ))}
             </div>
           </div>
@@ -166,10 +171,37 @@ const CoursePage = () => {
             </p>
 
             <div className="flex flex-col gap-2">
-              <button className="w-full bg-red-500 p-2 text-white text-lg font-semibold transition-all ease-in-out duration-200 hover:bg-red-600">
+              <button
+                onClick={() =>
+                  data &&
+                  addCart({
+                    courseName: data.COURSES[0].course_title,
+                    courseId: String(data.COURSES[0].course_id),
+                    courseImg: data.COURSES[0].course_image,
+                    duration: "em 30 dias",
+                    startAt: "Imediato",
+                    value: data.COURSES[0].course_price,
+                  })
+                }
+                className="w-full bg-red-500 p-2 text-white text-lg font-semibold transition-all ease-in-out duration-200 hover:bg-red-600"
+              >
                 Adicionar ao carrinho
               </button>
-              <button className="w-full border-neutral-900 border  p-2 text-neutral-900 text-lg font-semibold transition-all ease-in-out duration-200 hover:bg-neutral-200">
+              <button
+                onClick={() => {
+                  data &&
+                    addCart({
+                      courseName: data.COURSES[0].course_title,
+                      courseId: String(data.COURSES[0].course_id),
+                      courseImg: data.COURSES[0].course_image,
+                      duration: "em 30 dias",
+                      startAt: "Imediato",
+                      value: data.COURSES[0].course_price,
+                    });
+                  navigate("/carrinho");
+                }}
+                className="w-full border-neutral-900 border  p-2 text-neutral-900 text-lg font-semibold transition-all ease-in-out duration-200 hover:bg-neutral-200"
+              >
                 Comprar agora
               </button>
             </div>

@@ -25,10 +25,10 @@ const CoursesBySearch = () => {
   return (
     <div className="flex-1">
       <div className="w-11/12 py-10 m-auto flex flex-col gap-4">
-        <h3 className="capitalize text-3xl drop-shadow-lg text-start">
+        <h3 className="capitalize text-3xl drop-shadow-lg text-center">
           Busca por: {pesquisa}
         </h3>
-        <div className="w-full flex flex-wrap gap-8">
+        <div className="w-full justify-center flex flex-wrap gap-8">
           {isLoading ? (
             <Loading />
           ) : nome && nome.length > 0 ? (

@@ -1,8 +1,4 @@
 export interface IUser {
-  PROFILE: Profile;
-}
-
-interface Profile {
   user_id: number;
   user_type: number;
   user_name: string;
