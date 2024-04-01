@@ -37,15 +37,11 @@ const ClaimCoupon = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="min-w-96 rounded-lg p-3 flex flex-col gap-3"
       >
-        <input
-          type="hidden"
-          {...register("user_cpf")}
-          value={user?.PROFILE.user_cpf}
-        />
+        <input type="hidden" {...register("user_cpf")} value={user?.user_cpf} />
         <input
           type="hidden"
           {...register("user_email")}
-          value={user?.PROFILE.user_email}
+          value={user?.user_email}
         />
         <div className="flex flex-col gap-1">
           <label>Cupom:</label>
