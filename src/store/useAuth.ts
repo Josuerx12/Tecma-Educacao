@@ -13,11 +13,20 @@ export type recoveryCredentials = {
   user_email: string;
 };
 
+export type RegisterCredentials = {
+  user_name: string;
+  user_email: string;
+  user_cpf: string;
+  user_password: string;
+  user_country: string;
+  user_occupation: string;
+};
+
 type Actions = {
   getUser: () => Promise<void>;
   login: (credentials: FormData) => Promise<IAuthPayload>;
   recovery: (credentials: recoveryCredentials) => Promise<string>;
-  register: (credentials: FormData) => Promise<IAuthPayload>;
+  register: (credentials: RegisterCredentials) => Promise<IAuthPayload>;
 };
 
 export const useAuth = create<States & Actions>((set) => ({
@@ -34,9 +43,18 @@ export const useAuth = create<States & Actions>((set) => ({
       throw error.response.data.ERROR;
     }
   },
-  register: async (credentials: FormData) => {
+  register: async (credentials: RegisterCredentials) => {
     try {
-      const payload = (await api.post("/api/user/login", credentials)).data;
+      const formData = new FormData();
+
+      formData.append("user_name", credentials.user_name);
+      formData.append("user_email", credentials.user_email);
+      formData.append("user_cpf", credentials.user_cpf);
+      formData.append("user_password", credentials.user_password);
+      formData.append("user_occupation", credentials.user_occupation);
+      formData.append("user_country", credentials.user_country);
+
+      const payload = (await api.post("/api/user/login", formData)).data;
 
       Cookies.set("refreshToken", payload.USER_TOKEN);
       Cookies.set("user", payload.USER_ID);

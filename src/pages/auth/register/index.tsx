@@ -1,8 +1,25 @@
 import { Link } from "react-router-dom";
 import { useUtils } from "../../../hooks/useUtilities";
+import { useForm } from "react-hook-form";
+import { RegisterCredentials, useAuth } from "../../../store/useAuth";
+import { useMutation } from "react-query";
 
 const Register = () => {
   const { countries, ocupationArea } = useUtils();
+
+  const { register: registerUser } = useAuth();
+
+  const { register, reset, handleSubmit } = useForm<RegisterCredentials>();
+
+  const { mutateAsync } = useMutation("registerUser", registerUser, {
+    onSuccess: () => {
+      reset();
+    },
+  });
+
+  async function onSubmit(data: RegisterCredentials) {
+    await mutateAsync(data);
+  }
 
   return (
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
@@ -14,19 +31,24 @@ const Register = () => {
         </span>
       </h3>
 
-      <form className="min-w-96 rounded-lg p-3 flex flex-col gap-3">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="min-w-96 rounded-lg p-3 flex flex-col gap-3"
+      >
         <div className="flex flex-col gap-1">
           <label>Nome:</label>
           <input
             type="text"
             className="p-3 border border-black outline-red-500"
             placeholder="John Doe"
+            {...register("user_name")}
           />
         </div>
         <div className="flex flex-col gap-1">
           <label>Email:</label>
           <input
             type="email"
+            {...register("user_email")}
             className="p-3 border border-black outline-red-500"
             placeholder="jonhDoe@email.com"
           />
@@ -35,13 +57,17 @@ const Register = () => {
           <label>CPF:</label>
           <input
             type="text"
+            {...register("user_cpf")}
             className="p-3 border border-black outline-red-500"
             placeholder="123.456.789-10 ou 12345678910"
           />
         </div>
         <div className="flex flex-col gap-1">
           <label>País</label>
-          <select className="p-3 border border-black outline-red-500">
+          <select
+            {...register("user_country")}
+            className="p-3 border border-black outline-red-500"
+          >
             <option value="">Selecione seu país de origem</option>
             {countries.map((c) => (
               <option key={c.id} value={c.name}>
@@ -52,7 +78,10 @@ const Register = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label>Aréa de atuação</label>
-          <select className="p-3 border border-black outline-red-500">
+          <select
+            {...register("user_occupation")}
+            className="p-3 border border-black outline-red-500"
+          >
             <option value="">Selecione sua área de atuação</option>
             {ocupationArea.map((area) => (
               <option key={area.id} value={area.label}>
@@ -64,6 +93,7 @@ const Register = () => {
         <div className="flex flex-col gap-1">
           <label>Senha:</label>
           <input
+            {...register("user_password")}
             type="password"
             className="p-3 border border-black outline-red-500"
             placeholder="*******"
