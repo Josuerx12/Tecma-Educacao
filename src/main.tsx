@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const queryClient = new QueryClient();
 

@@ -6,6 +6,7 @@ import { ICategories, ICategoriesWithCourses } from "../interfaces/ICategories";
 export interface IClaimCouponResponse {
   STATE: number;
   SUCCESS: string;
+  ERROR: string;
   ITEMS: string[];
   USER_COMPANY: UserCompany;
 }

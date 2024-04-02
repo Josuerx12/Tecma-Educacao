@@ -13,6 +13,8 @@ import { CoursesBySearch } from "./pages/courses/courseBySearch";
 import Recovery from "./pages/auth/recovery";
 import ClaimCoupon from "./pages/claimCoupon";
 import CartPage from "./pages/cart";
+import { Bounce, ToastContainer } from "react-toastify";
+import UserCourses from "./pages/courses/userCourses";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -37,6 +39,10 @@ const App = () => {
         />
         <Route path="/carrinho" element={<CartPage />} />
         <Route
+          path="/cursos"
+          element={user ? <UserCourses /> : <Navigate to="/cursos" />}
+        />
+        <Route
           path="/cursosPorPesquisa/:pesquisa"
           element={<CoursesBySearch />}
         />
@@ -59,6 +65,19 @@ const App = () => {
           element={!user ? <Register /> : <Navigate to="/cursos" />}
         />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <Footer />
     </main>
   );

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaTicket, FaX } from "react-icons/fa6";
 import { useCart } from "../../store/useCart";
+import UserDropdown from "../userDropdown";
 
 type SearchProp = {
   search: string;
@@ -90,7 +91,7 @@ const Navbar = () => {
 
       <form
         onSubmit={handleSubmit(onSearch)}
-        className="w-2/4 hidden md:flex items-center gap-1 justify-between"
+        className="basis-36 flex-grow hidden md:flex items-center gap-1 justify-between"
       >
         <input
           {...register("search")}
@@ -122,7 +123,7 @@ const Navbar = () => {
         <li
           title="Unitec - Fazer Login"
           onClick={() => navigate("/resgatar/cupom")}
-          className="border border-neutral-900 p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex gap-2 items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
+          className="border border-neutral-900 text-nowrap p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex gap-2 items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
         >
           <FaTicket /> Resgatar Código
         </li>
@@ -134,6 +135,9 @@ const Navbar = () => {
           }`}
         >
           <FaUser /> Acessar
+        </li>
+        <li>
+          <UserDropdown />
         </li>
       </ul>
       <div
@@ -218,6 +222,9 @@ const Navbar = () => {
               className="w-fit border border-neutral-900 p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex gap-2 items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
             >
               <FaTicket /> Resgatar Código
+            </li>
+            <li>
+              <UserDropdown />
             </li>
           </ul>
         </div>

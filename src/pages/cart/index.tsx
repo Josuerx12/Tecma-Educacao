@@ -18,6 +18,8 @@ const CartPage = () => {
       if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
         window.location.href = data.PAYMENT.payment_url;
       }
+      cleanCart();
+      navigate("/");
     },
   });
 

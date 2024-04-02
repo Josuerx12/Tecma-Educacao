@@ -21,6 +21,24 @@ function useCourses() {
     }
   }
 
+  async function fetchUserCourses(userId?: string): Promise<ICourse[]> {
+    try {
+      const formData = new FormData();
+
+      formData.append("token", token);
+      {
+        userId && formData.append("user_id", userId);
+      }
+
+      const payload = (await api.post("/api/course/get-courses", formData)).data
+        .COURSES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
   async function fetchRelatedCourses({
     categoryId,
     courseId,
@@ -111,6 +129,7 @@ function useCourses() {
     fetchRelatedCourses,
     fetchByCategoryCourses,
     fetchBySearch,
+    fetchUserCourses,
   };
 }
 
