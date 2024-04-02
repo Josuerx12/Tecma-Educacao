@@ -14,7 +14,10 @@ const CartPage = () => {
 
   const { mutateAsync } = useMutation("createCart", createCart, {
     onSuccess: (data) => {
-      window.open(data.PAYMENT.payment_url, "_blank");
+      const newTab = window.open(data.PAYMENT.payment_url, "_blank");
+      if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+        window.location.href = data.PAYMENT.payment_url;
+      }
     },
   });
 
