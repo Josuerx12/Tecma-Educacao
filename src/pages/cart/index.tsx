@@ -33,12 +33,12 @@ const CartPage = () => {
         </h3>
 
         {cart.length > 0 ? (
-          <table className="w-full bg-white border">
+          <table className="w-full bg-white">
             <thead>
               <tr>
-                <th className="border border-neutral-500 text-center">Curso</th>
-                <th className="border border-neutral-500 text-center">valor</th>
-                <th className="border border-neutral-500"></th>
+                <th className="border border-black  text-center">Curso</th>
+                <th className="border border-black  text-center">valor</th>
+                <th className="border border-black min-w-8"></th>
               </tr>
             </thead>
             <tbody>
@@ -68,7 +68,7 @@ const CartPage = () => {
                         currency: "BRL",
                       })}
                     </td>
-                    <td className="text-center border border-neutral-300">
+                    <td className="text-center border border-neutral-300 min-w-8">
                       <FaX
                         onClick={() => removeCart(item.courseId)}
                         className="m-auto text-red-600 cursor-pointer"

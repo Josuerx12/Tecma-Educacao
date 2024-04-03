@@ -2,6 +2,8 @@
 import { api } from "../config/api";
 import { IAddress } from "../interfaces/IAddressesByCep";
 import { ICategories, ICategoriesWithCourses } from "../interfaces/ICategories";
+import { useAuth } from "../store/useAuth";
+import Cookies from "js-cookie";
 
 export interface IClaimCouponResponse {
   STATE: number;
@@ -44,8 +46,29 @@ interface Payment {
   payment_url: string;
 }
 
+type credentialsFetchCourses = {
+  user_id?: string;
+  category_id?: string;
+  course_id?: string;
+  query?: string;
+};
+
+export interface ICertify {
+  course_id: number;
+  course_company_id: number;
+  course_date_conclusion: string;
+  course_date_start: string;
+  course_time_elapsed: number;
+  course_title: string;
+  course_certificate_pdf: string;
+  course_certificate_personalized: string;
+  course_user_cpf_exists: number;
+}
+
 function useUtils() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
+  const { user } = useAuth();
+  const userToken = Cookies.get("refreshToken");
 
   async function findByCep(cep: string): Promise<IAddress> {
     try {
@@ -73,12 +96,50 @@ function useUtils() {
     }
   }
 
-  async function fetchCategoriesWithCourses(): Promise<
-    ICategoriesWithCourses[]
-  > {
+  async function fetchCertifies(): Promise<ICertify[]> {
     const formData = new FormData();
 
     formData.append("token", token);
+
+    if (user) {
+      formData.append("user_id", String(user.user_id));
+      formData.append("user_token", String(userToken));
+    }
+
+    try {
+      const payload = (
+        await api.post("/api/certificate/get-certificates", formData)
+      ).data.COURSES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function fetchCategoriesWithCourses(
+    credentials: credentialsFetchCourses
+  ): Promise<ICategoriesWithCourses[]> {
+    const formData = new FormData();
+
+    formData.append("token", token);
+
+    if (credentials.category_id) {
+      formData.append("category_id", credentials.category_id);
+    }
+    if (credentials.course_id) {
+      formData.append("course_id", credentials.course_id);
+    }
+    if (credentials.query) {
+      formData.append("query", credentials.query);
+    }
+    if (credentials.user_id) {
+      formData.append("user_id", credentials.user_id);
+    }
+    if (user) {
+      formData.append("external_lms", "1");
+      formData.append("user_token", String(userToken));
+    }
 
     try {
       const payload = (
@@ -1179,6 +1240,7 @@ function useUtils() {
     fetchCategoriesWithCourses,
     claimCoupon,
     createCart,
+    fetchCertifies,
   };
 }
 

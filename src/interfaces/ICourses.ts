@@ -15,6 +15,8 @@ export interface ICourse {
   course_category_id: number;
   course_category_slug: string;
   course_category_title: string;
+  course_iframe_url?: string;
+
   course_rating: number;
   course_students: number;
   course_captions: string[];

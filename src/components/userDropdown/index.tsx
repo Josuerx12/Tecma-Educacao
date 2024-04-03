@@ -38,22 +38,22 @@ const UserDropdown = () => {
       <ul
         className={`${
           isOpen ? "relative sm:absolute" : "hidden"
-        }  z-50 m-auto top-16 rounded shadow-lg right-0 p-2 bg-neutral-100 w-64 flex flex-col gap-2 text-sm overflow-auto`}
+        }  z-50 m-auto top-0 sm:top-16 rounded shadow-lg right-0 p-2 bg-neutral-100 w-64 flex flex-col gap-2 text-sm overflow-auto`}
       >
         <li
-          onClick={() => handleNavigate("/perfil")}
+          onClick={() => handleNavigate("/usuario/perfil")}
           className="flex transition-all ease-in-out duration-150 gap-2 justify-between items-center p-1 cursor-pointer font-semibold hover:text-white hover:bg-neutral-600 rounded"
         >
           Perfil <FaUser />
         </li>
         <li
-          onClick={() => handleNavigate("/certificados")}
+          onClick={() => handleNavigate("/usuario/certificados")}
           className="flex transition-all ease-in-out duration-150 gap-2 justify-between items-center p-1 cursor-pointer font-semibold hover:text-white hover:bg-neutral-600 rounded"
         >
           Certificados <FaCertificate />
         </li>
         <li
-          onClick={() => handleNavigate("/cursos")}
+          onClick={() => handleNavigate("/usuario/cursos")}
           className="flex transition-all ease-in-out duration-150 gap-2 justify-between items-center p-1 cursor-pointer font-semibold hover:text-white hover:bg-neutral-600 rounded"
         >
           Meus Cursos <FaVideo />

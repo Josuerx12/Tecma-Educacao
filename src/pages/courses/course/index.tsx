@@ -81,7 +81,7 @@ const CoursePage = () => {
           ></iframe>
 
           <div className="flex flex-col gap-1">
-            <p>
+            <p className="text-justify">
               <span className="font-bold">Descrição: </span>
               {data?.COURSES[0].course_description}
             </p>

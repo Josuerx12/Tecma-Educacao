@@ -14,7 +14,8 @@ import Recovery from "./pages/auth/recovery";
 import ClaimCoupon from "./pages/claimCoupon";
 import CartPage from "./pages/cart";
 import { Bounce, ToastContainer } from "react-toastify";
-import UserCourses from "./pages/courses/userCourses";
+import UserCourses from "./pages/user/courses";
+import CertifiesPage from "./pages/user/certificates";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -39,8 +40,12 @@ const App = () => {
         />
         <Route path="/carrinho" element={<CartPage />} />
         <Route
-          path="/cursos"
-          element={user ? <UserCourses /> : <Navigate to="/cursos" />}
+          path="/usuario/cursos"
+          element={user ? <UserCourses /> : <Navigate to="/auth" />}
+        />
+        <Route
+          path="/usuario/certificados"
+          element={user ? <CertifiesPage /> : <Navigate to="/auth" />}
         />
         <Route
           path="/cursosPorPesquisa/:pesquisa"

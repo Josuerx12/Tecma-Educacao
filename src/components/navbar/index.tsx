@@ -136,9 +136,11 @@ const Navbar = () => {
         >
           <FaUser /> Acessar
         </li>
-        <li>
-          <UserDropdown />
-        </li>
+        {user && (
+          <li>
+            <UserDropdown />
+          </li>
+        )}
       </ul>
       <div
         className={`absolute h-full bg-neutral-100 z-[999] top-[86px] ${
@@ -223,9 +225,11 @@ const Navbar = () => {
             >
               <FaTicket /> Resgatar Código
             </li>
-            <li>
-              <UserDropdown />
-            </li>
+            {user && (
+              <li>
+                <UserDropdown />
+              </li>
+            )}
           </ul>
         </div>
       </div>
