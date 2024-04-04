@@ -41,11 +41,11 @@ const App = () => {
         <Route path="/carrinho" element={<CartPage />} />
         <Route
           path="/usuario/cursos"
-          element={user ? <UserCourses /> : <Navigate to="/auth" />}
+          element={user ? <UserCourses /> : <Navigate to="/auth/login" />}
         />
         <Route
           path="/usuario/certificados"
-          element={user ? <CertifiesPage /> : <Navigate to="/auth" />}
+          element={user ? <CertifiesPage /> : <Navigate to="/auth/login" />}
         />
         <Route
           path="/cursosPorPesquisa/:pesquisa"
@@ -54,7 +54,7 @@ const App = () => {
         <Route path="/cursos/:categorySlug" element={<CoursesByCategory />} />
         <Route
           path="/auth/login"
-          element={!user ? <Login /> : <Navigate to="/cursos" />}
+          element={!user ? <Login /> : <Navigate to="/" />}
         />
 
         <Route

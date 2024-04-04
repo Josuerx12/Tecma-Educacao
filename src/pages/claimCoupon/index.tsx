@@ -69,7 +69,7 @@ const ClaimCoupon = () => {
             {...register("coupon")}
             type="text"
             className="p-3 border border-black outline-red-500"
-            placeholder="Insira seu Email ou CPF"
+            placeholder="Insira seu codigo do cupom!"
           />
         </div>
         <button

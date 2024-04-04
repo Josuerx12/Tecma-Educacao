@@ -3,9 +3,10 @@ import { useAuth } from "../../store/useAuth";
 import { useState } from "react";
 import { LuLogOut } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "react-query";
 
-const UserDropdown = () => {
-  const { user } = useAuth();
+const UserDropdown = ({ handleCloseNav }: { handleCloseNav: () => void }) => {
+  const { user, logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -14,7 +15,10 @@ const UserDropdown = () => {
   function handleNavigate(path: string) {
     setIsOpen(false);
     navigate(path);
+    handleCloseNav();
   }
+
+  const query = useQueryClient();
 
   return (
     <div className="w-full">
@@ -59,7 +63,14 @@ const UserDropdown = () => {
           Meus Cursos <FaVideo />
         </li>
         <hr />
-        <li className="flex transition-all ease-in-out duration-150 gap-2 justify-between p-1 cursor-pointer font-semibold hover:bg-neutral-900 hover:text-white items-center rounded">
+        <li
+          onClick={() => {
+            logout();
+            handleCloseNav();
+            query.clear();
+          }}
+          className="flex transition-all ease-in-out duration-150 gap-2 justify-between p-1 cursor-pointer font-semibold hover:bg-neutral-900 hover:text-white items-center rounded"
+        >
           Sair <LuLogOut />
         </li>
       </ul>

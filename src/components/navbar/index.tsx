@@ -53,9 +53,9 @@ const Navbar = () => {
 
       <img
         onClick={() => navigate("/")}
-        className="w-44 h-14 cursor-pointer object-cover"
+        className="w-44 h-14 cursor-pointer object-contain"
         title="Unitec Educação - Pagina Inicial"
-        src="/unitecLogo2.jpeg"
+        src="/logounitec.png"
       />
 
       <div className="relative hidden md:block">
@@ -138,7 +138,7 @@ const Navbar = () => {
         </li>
         {user && (
           <li>
-            <UserDropdown />
+            <UserDropdown handleCloseNav={() => setOpenMobile(false)} />
           </li>
         )}
       </ul>
@@ -227,7 +227,7 @@ const Navbar = () => {
             </li>
             {user && (
               <li>
-                <UserDropdown />
+                <UserDropdown handleCloseNav={() => setOpenMobile(false)} />
               </li>
             )}
           </ul>
