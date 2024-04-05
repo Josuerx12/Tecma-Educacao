@@ -129,7 +129,7 @@ const CoursePage = () => {
                   </span>
                   {data?.COURSES[0].course_teacher.teacher_name}
                 </h3>
-                <p className="text-pretty flex-col flex">
+                <p className="text-justify flex-col flex">
                   {data?.COURSES[0].course_teacher.teacher_description
                     .split(".")
                     .map((p, i) => (

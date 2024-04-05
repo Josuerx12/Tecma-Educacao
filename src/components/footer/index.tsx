@@ -105,23 +105,37 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full p-6 flex justify-between flex-wrap gap-4">
-        <form className="flex flex-col gap-1">
-          <label className="text-sm text-neutral-500">
-            Conferir autenticidade do certificado:
-          </label>
-          <div className="flex flex-wrap">
-            <input
-              placeholder="Digite o numero do certificado"
-              type="text"
-              className="border shadow-sm p-1 basis-36 flex-grow"
-            />
-            <button className="bg-neutral-200 border border-neutral-500 p-1 flex-grow">
-              Consultar
-            </button>
-          </div>
-        </form>
+        <div className="flex flex-col gap-2">
+          <form className="flex flex-col gap-1">
+            <label className="text-sm text-neutral-500">
+              Conferir autenticidade do certificado:
+            </label>
+            <div className="flex flex-wrap">
+              <input
+                placeholder="Digite o numero do certificado"
+                type="text"
+                className="border shadow-sm p-1 basis-36 flex-grow"
+              />
+              <button className="bg-neutral-200 border border-neutral-500 p-1 flex-grow">
+                Consultar
+              </button>
+            </div>
+          </form>
+          <p className="flex gap-3 text-sm">
+            <a href="/privacidade" className="text-blue-500">
+              Política de Privacidade
+            </a>
+            •
+            <a href="/termos-de-uso" className="text-blue-500">
+              Termos de Uso
+            </a>
+          </p>
+        </div>
 
-        <img src="https://www.iped.com.br/_img/selo_seguranca2.jpg" />
+        <img
+          className="w-24 h-14"
+          src="https://www.iped.com.br/_img/selo_seguranca2.jpg"
+        />
       </div>
     </footer>
   );

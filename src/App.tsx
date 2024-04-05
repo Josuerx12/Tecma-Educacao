@@ -16,6 +16,8 @@ import CartPage from "./pages/cart";
 import { Bounce, ToastContainer } from "react-toastify";
 import UserCourses from "./pages/user/courses";
 import CertifiesPage from "./pages/user/certificates";
+import PrivatePolicy from "./pages/privatePolicy";
+import UseTerms from "./pages/useTerms";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -56,6 +58,9 @@ const App = () => {
           path="/auth/login"
           element={!user ? <Login /> : <Navigate to="/" />}
         />
+
+        <Route path="/privacidade" element={<PrivatePolicy />} />
+        <Route path="/termos-de-uso" element={<UseTerms />} />
 
         <Route
           path="/auth/recovery"
