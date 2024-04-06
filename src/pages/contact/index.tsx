@@ -24,7 +24,8 @@ const ContactPage = () => {
     <div className="flex-1">
       <div className="py-6 mx-auto w-11/12 flex flex-col gap-2 relative">
         <a
-          href=""
+          href="https://wa.me/5512991400408"
+          target="_blank"
           className="absolute top-10 right-0 text-xl flex gap-2 items-center bg-green-600 rounded border-2 border-green-900 z-20 text-white p-2 cursor-pointer hover:bg-green-500 transition-colors duration-150 ease-linear"
         >
           Contato via <FaWhatsapp />
@@ -36,7 +37,16 @@ const ContactPage = () => {
           Nossa equipe está pronta para te atender.
         </h6>
         <h6 className="text-lg drop-shadow-lg text-neutral-800">
-          Fale via chat ou formulário abaixo.
+          Fale{" "}
+          <a
+            href="https://wa.me/5512991400408"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500"
+          >
+            via whatsapp
+          </a>{" "}
+          ou formulário abaixo.
         </h6>
 
         <form

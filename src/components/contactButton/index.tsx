@@ -6,9 +6,10 @@ const ContactButton = () => {
     <Link
       to="/contato"
       title="UNITEC - Contato"
-      className="hidden sm:fixed bottom-10 rounded-full hover:bg-neutral-700 duration-150 transition-all ease-in-out right-4 z-50 text-3xl text-white p-4 sm:flex justify-center items-center gap-3 bg-neutral-800"
+      className="hidden sm:fixed sm:flex bottom-10 rounded-full hover:bg-red-700 duration-150 hover:text-white transition-all ease-in-out right-4 z-50 text-3xl text-neutral-200 p-4 flex-col justify-center items-center gap-1 bg-red-600"
     >
       <FaHeadphones />
+      <span className="text-sm">Contato</span>
     </Link>
   );
 };
