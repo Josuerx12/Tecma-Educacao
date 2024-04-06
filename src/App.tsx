@@ -22,6 +22,7 @@ import { ContactButton } from "./components/contactButton";
 import ContactPage from "./pages/contact";
 import CertDetailsPage from "./pages/certDetails";
 import ErrorPage from "./pages/error";
+import UserProfile from "./pages/user/profile";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -54,6 +55,10 @@ const App = () => {
         <Route
           path="/usuario/certificados"
           element={user ? <CertifiesPage /> : <Navigate to="/auth/login" />}
+        />
+        <Route
+          path="/usuario/perfil"
+          element={user ? <UserProfile /> : <Navigate to="/auth/login" />}
         />
         <Route
           path="/cursosPorPesquisa/:pesquisa"

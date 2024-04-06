@@ -2,6 +2,10 @@
 import { api } from "../config/api";
 import { IAddress } from "../interfaces/IAddressesByCep";
 import { ICategories, ICategoriesWithCourses } from "../interfaces/ICategories";
+import {
+  IEditUserCredentials,
+  IEditUserPayload,
+} from "../interfaces/IEditUser";
 import { useAuth } from "../store/useAuth";
 import Cookies from "js-cookie";
 
@@ -261,6 +265,47 @@ function useUtils() {
       formData.append("user_id", credentials.user_id);
 
       const payload = (await api.post("/api/buying/set-cart", formData)).data;
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function editUser(
+    credentials: IEditUserCredentials
+  ): Promise<IEditUserPayload> {
+    try {
+      const formData = new FormData();
+
+      formData.append("token", token);
+      if (user) {
+        formData.append("user_id", String(user.user_id));
+      }
+      if (userToken) {
+        formData.append("user_token", userToken);
+      }
+
+      if (credentials.user_email) {
+        formData.append("user_email", credentials.user_email);
+      }
+      if (credentials.user_photo) {
+        formData.append("user_photo", credentials.user_photo[0]);
+      }
+      if (credentials.user_address) {
+        formData.append("user_address", credentials.user_address);
+      }
+      if (credentials.user_city) {
+        formData.append("user_city", credentials.user_city);
+      }
+      if (credentials.user_postalcode) {
+        formData.append("user_postalcode", credentials.user_postalcode);
+      }
+      if (credentials.user_neighborhood) {
+        formData.append("user_neighborhood", credentials.user_neighborhood);
+      }
+
+      const payload = (await api.post("/api/user/set-profile", formData)).data;
+
       return payload;
     } catch (error: any) {
       throw error.response.data.ERROR;
@@ -1320,6 +1365,7 @@ function useUtils() {
     fetchCertifies,
     contact,
     certDetails,
+    editUser,
   };
 }
 
