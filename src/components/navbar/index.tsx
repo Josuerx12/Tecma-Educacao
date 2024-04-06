@@ -1,4 +1,4 @@
-import { FaArrowDown, FaSearch, FaUser } from "react-icons/fa";
+import { FaArrowDown, FaHeadphones, FaSearch, FaUser } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
@@ -109,6 +109,12 @@ const Navbar = () => {
       </form>
 
       <ul className="flex items-center gap-2">
+        <Link to="/contato" className="sm:hidden">
+          <FaHeadphones
+            className="text-xl text-neutral-800"
+            title="UNITEC - Contato"
+          />
+        </Link>
         <Link to="/carrinho" className="relative md:mx-4">
           <HiOutlineShoppingCart className="text-2xl text-neutral-900" />
           {cart.length > 0 && (

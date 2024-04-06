@@ -18,6 +18,8 @@ import UserCourses from "./pages/user/courses";
 import CertifiesPage from "./pages/user/certificates";
 import PrivatePolicy from "./pages/privatePolicy";
 import UseTerms from "./pages/useTerms";
+import { ContactButton } from "./components/contactButton";
+import ContactPage from "./pages/contact";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -41,6 +43,7 @@ const App = () => {
           element={<CoursePage />}
         />
         <Route path="/carrinho" element={<CartPage />} />
+        <Route path="/contato" element={<ContactPage />} />
         <Route
           path="/usuario/cursos"
           element={user ? <UserCourses /> : <Navigate to="/auth/login" />}
@@ -88,6 +91,7 @@ const App = () => {
         theme="dark"
         transition={Bounce}
       />
+      <ContactButton />
       <Footer />
     </main>
   );

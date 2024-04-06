@@ -65,6 +65,23 @@ export interface ICertify {
   course_user_cpf_exists: number;
 }
 
+export interface ContactPayload {
+  SUCCESS: string;
+  ERROR: string;
+  CONTACT: Contact;
+}
+
+interface Contact {
+  contact_id: number;
+  contact_response: string;
+}
+
+export interface ContactCredentials {
+  user_name: string;
+  user_email: string;
+  message: string;
+}
+
 function useUtils() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
   const { user } = useAuth();
@@ -74,6 +91,32 @@ function useUtils() {
     try {
       const payload = (await api.post("/api/app/get-postalcode", cep)).data
         .ADDRESS;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function contact(
+    credentials: ContactCredentials
+  ): Promise<ContactPayload> {
+    try {
+      const formData = new FormData();
+
+      formData.append("token", token);
+      if (credentials.user_name && credentials.user_name.length > 0) {
+        formData.append("user_name", credentials.user_name);
+      }
+      if (credentials.user_email && credentials.user_email.length > 0) {
+        formData.append("user_email", credentials.user_email);
+      }
+      if (credentials.message && credentials.message.length > 0) {
+        formData.append("message", credentials.message);
+      }
+
+      const payload = (await api.post("/api/support/set-contact", formData))
+        .data;
 
       return payload;
     } catch (error: any) {
@@ -1241,6 +1284,7 @@ function useUtils() {
     claimCoupon,
     createCart,
     fetchCertifies,
+    contact,
   };
 }
 
