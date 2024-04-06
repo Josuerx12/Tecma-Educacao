@@ -82,6 +82,24 @@ export interface ContactCredentials {
   message: string;
 }
 
+export interface CertfifyDetailCredentials {
+  certificate_number: string;
+}
+
+interface ICertificate {
+  CERTIFICATE: Certificate;
+  ERROR: string;
+}
+
+interface Certificate {
+  certificate_number: number;
+  certificate_date_start: string;
+  certificate_date_conclusion: string;
+  certificate_time_elapsed: number;
+  certificate_user_name: string;
+  certificate_course_title: string;
+}
+
 function useUtils() {
   const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
   const { user } = useAuth();
@@ -153,6 +171,22 @@ function useUtils() {
       const payload = (
         await api.post("/api/certificate/get-certificates", formData)
       ).data.COURSES;
+
+      return payload;
+    } catch (error: any) {
+      throw error.response.data.ERROR;
+    }
+  }
+
+  async function certDetails(certNumber?: string): Promise<ICertificate> {
+    const formData = new FormData();
+
+    formData.append("token", token);
+    if (certNumber) formData.append("certificate_number", certNumber);
+
+    try {
+      const payload = (await api.post("/api/certificate/get-details", formData))
+        .data;
 
       return payload;
     } catch (error: any) {
@@ -1285,6 +1319,7 @@ function useUtils() {
     createCart,
     fetchCertifies,
     contact,
+    certDetails,
   };
 }
 

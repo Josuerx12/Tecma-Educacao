@@ -20,6 +20,7 @@ import PrivatePolicy from "./pages/privatePolicy";
 import UseTerms from "./pages/useTerms";
 import { ContactButton } from "./components/contactButton";
 import ContactPage from "./pages/contact";
+import CertDetailsPage from "./pages/certDetails";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -44,6 +45,7 @@ const App = () => {
         />
         <Route path="/carrinho" element={<CartPage />} />
         <Route path="/contato" element={<ContactPage />} />
+        <Route path="/certificado/:certNumber" element={<CertDetailsPage />} />
         <Route
           path="/usuario/cursos"
           element={user ? <UserCourses /> : <Navigate to="/auth/login" />}

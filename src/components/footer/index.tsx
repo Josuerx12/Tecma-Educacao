@@ -1,11 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useForm } from "react-hook-form";
 import { FaCheckCircle, FaList, FaUsers, FaVideo } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { MdOndemandVideo, MdOutlineDocumentScanner } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const { handleSubmit, reset, register } = useForm();
+
+  const navigator = useNavigate();
+
+  function onSubmit(data: any) {
+    navigator("/certificado/" + data.certificate_number);
+    reset();
+  }
+
   return (
     <footer className="bottom-0 right-0 flex-0 w-full m-auto flex flex-col items-center bg-white">
-      <div className="flex gap-6 items-center">
+      <div className="flex gap-2 items-center">
         <img
           className="mt-10 hidden sm:block"
           src="https://www.sie.com.br/admin/_img/app.png?v3"
@@ -104,14 +116,18 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-6 flex justify-between flex-wrap gap-4">
+      <div className="w-10/12 p-6 flex justify-between flex-wrap gap-4">
         <div className="flex flex-col gap-2">
-          <form className="flex flex-col gap-1">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-1"
+          >
             <label className="text-sm text-neutral-500">
               Conferir autenticidade do certificado:
             </label>
             <div className="flex flex-wrap">
               <input
+                {...register("certificate_number")}
                 placeholder="Digite o numero do certificado"
                 type="text"
                 className="border shadow-sm p-1 basis-36 flex-grow"

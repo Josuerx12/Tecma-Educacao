@@ -26,7 +26,7 @@ const ContactPage = () => {
         <a
           href="https://wa.me/5512991400408"
           target="_blank"
-          className="absolute top-10 right-0 text-xl flex gap-2 items-center bg-green-600 rounded border-2 border-green-900 z-20 text-white p-2 cursor-pointer hover:bg-green-500 transition-colors duration-150 ease-linear"
+          className="hidden sm:absolute  top-10 right-0 text-xl sm:flex gap-2 items-center bg-green-600 rounded border-2 border-green-900 z-20 text-white p-2 cursor-pointer hover:bg-green-500 transition-colors duration-150 ease-linear"
         >
           Contato via <FaWhatsapp />
         </a>
