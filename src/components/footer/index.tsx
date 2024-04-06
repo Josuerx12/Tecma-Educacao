@@ -13,6 +13,7 @@ const Footer = () => {
   function onSubmit(data: any) {
     navigator("/certificado/" + data.certificate_number);
     reset();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
@@ -116,7 +117,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-10/12 p-6 flex justify-between flex-wrap gap-4">
+      <div className="w-10/12 py-6 mx-auto flex items-center justify-between flex-wrap gap-4">
         <div className="flex flex-col gap-2">
           <form
             onSubmit={handleSubmit(onSubmit)}

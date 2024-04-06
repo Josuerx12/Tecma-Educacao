@@ -21,6 +21,7 @@ import UseTerms from "./pages/useTerms";
 import { ContactButton } from "./components/contactButton";
 import ContactPage from "./pages/contact";
 import CertDetailsPage from "./pages/certDetails";
+import ErrorPage from "./pages/error";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -79,6 +80,7 @@ const App = () => {
           path="/auth/cadastre-se"
           element={!user ? <Register /> : <Navigate to="/cursos" />}
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <ToastContainer
         position="top-right"
