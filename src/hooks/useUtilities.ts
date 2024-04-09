@@ -221,6 +221,7 @@ function useUtils() {
       formData.append("external_lms", "1");
       formData.append("user_token", String(userToken));
     }
+    formData.append("include_all", "1");
 
     try {
       const payload = (

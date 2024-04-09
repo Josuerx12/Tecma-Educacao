@@ -124,7 +124,7 @@ const CoursePage = () => {
               />
               <div className="text-neutral-50 flex basis-4/6 flex-grow flex-col gap-3">
                 <h3 className="text-3xl font-bold">
-                  <span className="text-2xl font-normal hidden md:inline-block">
+                  <span className="text-2xl font-normal hidden md:inline-block mr-2">
                     Sobre o autor:{" "}
                   </span>
                   {data?.COURSES[0].course_teacher.teacher_name}
@@ -133,7 +133,12 @@ const CoursePage = () => {
                   {data?.COURSES[0].course_teacher.teacher_description
                     .split(".")
                     .map((p, i) => (
-                      <span key={i}>{p}.</span>
+                      <span key={i} className="break-words">
+                        {p
+                          .replace(//g, " ")
+                          .split("-")
+                          .map((p2) => p2)}
+                      </span>
                     ))}
                 </p>
               </div>

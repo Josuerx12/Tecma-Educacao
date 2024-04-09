@@ -70,6 +70,7 @@ function useCourses() {
 
       formData.append("token", token);
       formData.append("category_slug", categorySlug);
+      formData.append("results", "500");
 
       const payload = await api.post("/api/course/get-courses", formData);
 
