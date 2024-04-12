@@ -86,7 +86,7 @@ const Register = () => {
           >
             <option value="">Selecione sua área de atuação</option>
             {ocupationArea.map((area) => (
-              <option key={area.id} value={area.label}>
+              <option key={area.id} value={area.id}>
                 {area.label}
               </option>
             ))}
