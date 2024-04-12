@@ -23,6 +23,8 @@ import ContactPage from "./pages/contact";
 import CertDetailsPage from "./pages/certDetails";
 import ErrorPage from "./pages/error";
 import UserProfile from "./pages/user/profile";
+import { useQuery } from "react-query";
+import { useSecure } from "./hooks/useSecure";
 
 const App = () => {
   const { user, getUser } = useAuth();
@@ -34,6 +36,14 @@ const App = () => {
       getUser();
     }
   }, [refreshToken]);
+
+  const { fetchSecurity } = useSecure();
+
+  const { data } = useQuery("security", fetchSecurity);
+
+  if (!data) {
+    return;
+  }
 
   return (
     <main className="min-h-screen flex flex-col justify-between font-[Poppins] bg-neutral-100">
