@@ -36,7 +36,7 @@ const Login = () => {
         Autentique-se para acessar a plataforma da
         <span className="text-red-600 font-semibold uppercase">
           {" "}
-          UNITEC Educação!
+          tecma educação!
         </span>
       </h3>
 

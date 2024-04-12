@@ -7,7 +7,7 @@ const PrivatePolicy = () => {
         </h3>
 
         <p className="text-justify text-sm">
-          A Unitec Educação e Trabalho Ltda tem o compromisso de manter a
+          A TECMA Educação e Trabalho Ltda tem o compromisso de manter a
           privacidade de cada um dos seus alunos. Conheça abaixo algumas de
           nossas condutas e informações sobre direitos autorais.
         </p>
@@ -153,11 +153,11 @@ const PrivatePolicy = () => {
           através do e-mail:{" "}
           <a
             className="text-blue-600"
-            title="UNITEC - Clique aqui para entrar em contato via e-mail"
-            href="mailto:contato@uniteceducacao.com.br"
+            title="TECMA - Clique aqui para entrar em contato via e-mail"
+            href="mailto:contato@tecmaeducacao.com.br"
             target="_blank"
           >
-            contato@uniteceducacao.com.br
+            contato@tecmaeducacao.com.br
           </a>
         </p>
       </div>

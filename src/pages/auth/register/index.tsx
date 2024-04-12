@@ -27,9 +27,9 @@ const Register = () => {
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
       <h3 className="text-xl text-center ">
         Cadastre-se para acessar a plataforma da
-        <span className="text-red-800 font-semibold uppercase">
+        <span className="text-red-600 font-semibold uppercase">
           {" "}
-          UNITEC Educação!
+          tecma Educação!
         </span>
       </h3>
 

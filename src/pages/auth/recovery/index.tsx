@@ -23,7 +23,7 @@ const Recovery = () => {
         Recuperação de acesso
         <span className="text-red-600 font-semibold uppercase">
           {" "}
-          UNITEC Educação!
+          tecma Educação!
         </span>
       </h3>
 
