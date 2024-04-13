@@ -35,7 +35,7 @@ const Register = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="min-w-96 rounded-lg p-3 flex flex-col gap-3"
+        className="sm:min-w-96 w-full sm:w-fit rounded-lg p-3 flex flex-col gap-3"
       >
         <div className="flex flex-col gap-1">
           <label>Nome:</label>
