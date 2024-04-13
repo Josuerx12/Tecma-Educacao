@@ -56,8 +56,8 @@ const Navbar = () => {
         title="Tecma - Pagina inicial"
         className="flex gap-2 items-center mr-8 cursor-pointer"
       >
-        <img src="./logo2.png" className="w-12 h-12" />
-        <h3 className="font-bold uppercase text-xl text-neutral-900">
+        <img src="/logo2.png" className="w-12 h-12" />
+        <h3 className="font-bold uppercase text-xl text-neutral-900 text-center">
           tecma <span className="font-normal">educação</span>
         </h3>
       </Link>
@@ -166,7 +166,7 @@ const Navbar = () => {
                   type="text"
                   {...register("search")}
                   required
-                  className="p-1 shadow flex-1 rounded basis-52 flex-grow"
+                  className="p-1 shadow flex-1 rounded basis-48 flex-grow"
                   placeholder="Pesquise por um curso!"
                 />
                 <button className="text-white bg-neutral-900 p-2 rounded-full">
