@@ -159,14 +159,14 @@ const Navbar = () => {
       >
         <div className="p-4 flex flex-col gap-6">
           {openMobile && (
-            <form onSubmit={handleSubmit(onSearch)}>
+            <form onSubmit={handleSubmit(onSearch)} className="w-full">
               <label>Pesquisar Curso:</label>
-              <div className="flex gap-1 items-center  w-full">
+              <div className="flex gap-1 items-center w-full">
                 <input
                   type="text"
                   {...register("search")}
                   required
-                  className="p-1 shadow flex-1 rounded basis-48 flex-grow"
+                  className="p-1 shadow flex-1 rounded flex-grow"
                   placeholder="Pesquise por um curso!"
                 />
                 <button className="text-white bg-neutral-900 p-2 rounded-full">
