@@ -10,7 +10,7 @@ const CertifyCard = ({ cert }: { cert: ICertify }) => {
       key={cert.course_id}
     >
       <h2 className="flex justify-between items-center">
-        UNITEC - Certificado <PiCertificateBold className="text-xl" />
+        TECMA - Certificado <PiCertificateBold className="text-xl" />
       </h2>
       <h3 className="text-lg line-clamp-2 font-semibold drop-shadow-lg">
         {cert.course_title}
@@ -34,7 +34,7 @@ const CertifyCard = ({ cert }: { cert: ICertify }) => {
       <a
         href={cert.course_certificate_personalized}
         target="_blank"
-        title="UNITEC - Baixar certificado!"
+        title="TECMA - Baixar certificado!"
         className="bg-white text-neutral-900 p-2 rounded text-center font-bold hover:bg-neutral-200 transition-all duration-100 ease-linear"
       >
         Baixar certificado

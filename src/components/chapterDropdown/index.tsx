@@ -15,7 +15,7 @@ const ChapterDropDown = ({
     <div
       className="w-fit"
       title={
-        "UNITEC - Clique para visualizar as aulas do " + chapter.chapter_title
+        "TECMA - Clique para visualizar as aulas do " + chapter.chapter_title
       }
       onClick={() => setIsOpenDropdown((prev) => !prev)}
     >

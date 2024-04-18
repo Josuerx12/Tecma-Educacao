@@ -51,12 +51,16 @@ const Navbar = () => {
         <FaX className={openMobile ? "block text-xl" : "hidden"} />
       </button>
 
-      <img
-        onClick={() => navigate("/")}
-        className="w-44 h-14 cursor-pointer object-contain"
-        title="Unitec Educação - Pagina Inicial"
-        src="/logounitec.png"
-      />
+      <Link
+        to="/"
+        title="Tecma - Pagina inicial"
+        className="flex gap-2 items-center mr-8 cursor-pointer"
+      >
+        <img src="/logo2.png" className="w-12 h-12" />
+        <h3 className="font-bold uppercase text-xl text-neutral-900 text-center">
+          tecma <span className="font-normal">educação</span>
+        </h3>
+      </Link>
 
       <div className="relative hidden md:block">
         <button
@@ -112,7 +116,7 @@ const Navbar = () => {
         <Link to="/contato" className="sm:hidden">
           <FaHeadphones
             className="text-xl text-neutral-800"
-            title="UNITEC - Contato"
+            title="TECMA - Contato"
           />
         </Link>
         <Link to="/carrinho" className="relative md:mx-4">
@@ -127,14 +131,14 @@ const Navbar = () => {
 
       <ul className={`hidden md:flex gap-2 items-center`}>
         <li
-          title="Unitec - Fazer Login"
+          title="TECMA - Fazer Login"
           onClick={() => navigate("/resgatar/cupom")}
           className="border border-neutral-900 text-nowrap p-2 transition ease-in-out duration-100 font-semibold text-neutral-900 text-sm flex gap-2 items-center cursor-pointer bg-neutral-50 hover:bg-neutral-200"
         >
           <FaTicket /> Resgatar Código
         </li>
         <li
-          title="Unitec - Acesse"
+          title="TECMA - Acesse"
           onClick={() => navigate("/auth/login")}
           className={`border   border-neutral-900 p-2 font-semibold transition ease-in-out gap-2 duration-100 bg-neutral-900 text-white text-sm flex items-center cursor-pointer hover:bg-neutral-800 ${
             user && "hidden"
@@ -155,14 +159,14 @@ const Navbar = () => {
       >
         <div className="p-4 flex flex-col gap-6">
           {openMobile && (
-            <form onSubmit={handleSubmit(onSearch)}>
+            <form onSubmit={handleSubmit(onSearch)} className="w-full">
               <label>Pesquisar Curso:</label>
-              <div className="flex gap-1 items-center  w-full">
+              <div className="flex gap-1 items-center w-full">
                 <input
                   type="text"
                   {...register("search")}
                   required
-                  className="p-1 shadow flex-1 rounded basis-52 flex-grow"
+                  className="p-1 shadow flex-1 rounded flex-grow"
                   placeholder="Pesquise por um curso!"
                 />
                 <button className="text-white bg-neutral-900 p-2 rounded-full">
@@ -210,7 +214,7 @@ const Navbar = () => {
 
           <ul className="flex flex-col gap-3 items-center">
             <li
-              title="Unitec - Acesse"
+              title="TECMA - Acesse"
               onClick={() => {
                 navigate("/auth/login");
                 setOpenMobile(false);
@@ -222,7 +226,7 @@ const Navbar = () => {
               <FaUser /> Acessar
             </li>
             <li
-              title="Unitec - Fazer Login"
+              title="TECMA - Fazer Login"
               onClick={() => {
                 navigate("/resgatar/cupom");
                 setOpenMobile(false);

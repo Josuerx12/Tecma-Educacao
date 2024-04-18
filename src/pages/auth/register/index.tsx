@@ -32,15 +32,15 @@ const Register = () => {
     <div className="flex-1 flex flex-col items-center pt-10 gap-4">
       <h3 className="text-xl text-center ">
         Cadastre-se para acessar a plataforma da
-        <span className="text-red-800 font-semibold uppercase">
+        <span className="text-red-600 font-semibold uppercase">
           {" "}
-          UNITEC Educação!
+          tecma Educação!
         </span>
       </h3>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="min-w-96 rounded-lg p-3 flex flex-col gap-3"
+        className="sm:min-w-96 w-full sm:w-fit rounded-lg p-3 flex flex-col gap-3"
       >
         <div className="flex flex-col gap-1">
           <label>Nome:</label>

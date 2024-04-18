@@ -3,11 +3,11 @@ const UseTerms = () => {
     <div className="flex-1">
       <div className="py-6 mx-auto w-11/12 flex flex-col gap-2">
         <h3 className="text-3xl drop-shadow-lg font-bold text-neutral-800">
-          Termos de Uso da Unitec Educação e Trabalho
+          Termos de Uso da TECMA Educação e Trabalho
         </h3>
 
         <p className="text-justify text-sm">
-          Ao utilizar a Unitec Educação e Trabalho, você concorda em cumprir
+          Ao utilizar a TECMA Educação e Trabalho, você concorda em cumprir
           estes Termos de Uso, que estão em conformidade com a Lei Federal
           Brasileira de Direitos Autorais (Lei Nº 9.610/98) e outras legislações
           aplicáveis a infoprodutos e educação online.
@@ -59,7 +59,7 @@ const UseTerms = () => {
             não violação de direitos autorais ou leis aplicáveis.
           </li>
           <li className="text-sm list-disc ml-7 text-justify">
-            Licenciamento para Unitec: Ao postar, você concede à Unitec uma
+            Licenciamento para TECMA: Ao postar, você concede à TECMA uma
             licença para usar seu conteúdo na plataforma.
           </li>
         </ul>
@@ -115,11 +115,11 @@ const UseTerms = () => {
           Contate-nos em{" "}
           <a
             className="text-blue-600"
-            title="UNITEC - Clique aqui para entrar em contato via e-mail"
-            href="mailto:contato@uniteceducacao.com.br"
+            title="TECMA - Clique aqui para entrar em contato via e-mail"
+            href="mailto:contato@tecmaeducacao.com.br"
             target="_blank"
           >
-            contato@uniteceducacao.com.br
+            contato@tecmaeducacao.com.br
           </a>{" "}
           para dúvidas ou notificações de violação de direitos autorais.
         </p>

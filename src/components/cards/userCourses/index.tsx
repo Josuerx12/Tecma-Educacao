@@ -5,7 +5,7 @@ const UserCourseCard = ({ course }: { course: ICourse }) => {
     <a
       href={course.course_iframe_url}
       target="_blank"
-      title={`UNITEC - Acessar curso ${course.course_title}`}
+      title={`TECMA - Acessar curso ${course.course_title}`}
       key={course.course_id}
       className="w-full sm:w-60 h-72 flex flex-col  bg-neutral-200 opacity-90 hover:opacity-100"
     >
