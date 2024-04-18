@@ -8,7 +8,7 @@ const Recovery = () => {
 
   const { register, handleSubmit } = useForm<recoveryCredentials>();
 
-  const { mutateAsync, isLoading, isSuccess, data } = useMutation(
+  const { mutateAsync, isLoading, data } = useMutation(
     "recoveryAccount",
     recovery
   );
@@ -42,7 +42,7 @@ const Recovery = () => {
         </div>
         {data && <p className="text-lg text-green-900">{data}</p>}
         <button
-          disabled={isSuccess || isLoading}
+          disabled={(data && data.length > 0) || isLoading}
           className="bg-red-500 p-2 rounded font-semibold text-white hover:bg-red-600"
         >
           Recuperar

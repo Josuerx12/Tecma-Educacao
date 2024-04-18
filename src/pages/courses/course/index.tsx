@@ -109,9 +109,13 @@ const CoursePage = () => {
               <h3 className="text-3xl drop-shadow-lg capitalize">
                 Conteúdo do curso
               </h3>
-              {data?.COURSES[0].course_chapters.map((chapter, i) => (
-                <ChapterDropDown chapter={chapter} key={i} index={i} />
-              ))}
+              {data?.COURSES[0].course_chapters.map((chapter, i) => {
+                if (chapter.chapter_topics.length > 0) {
+                  return (
+                    <ChapterDropDown chapter={chapter} key={i} index={i} />
+                  );
+                }
+              })}
             </div>
           )}
 
