@@ -51,9 +51,10 @@ export const useAuth = create<States & Actions>((set) => {
       set(() => ({ user: undefined }));
     },
     register: async (credentials: RegisterCredentials) => {
+      const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
       try {
         const formData = new FormData();
-
+        formData.append("token", token);
         formData.append("user_name", credentials.user_name);
         formData.append("user_email", credentials.user_email);
         formData.append("user_cpf", credentials.user_cpf);
