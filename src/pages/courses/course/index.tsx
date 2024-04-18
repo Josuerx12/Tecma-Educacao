@@ -53,9 +53,9 @@ const CoursePage = () => {
 
   if (data) {
     if (data.COURSES[0].course_hours <= 20) {
-      data.COURSES[0].course_price = 39.9;
+      data.COURSES[0].course_price = 49.9;
     } else {
-      data.COURSES[0].course_price = 97.0;
+      data.COURSES[0].course_price = 197.0;
     }
   }
 
