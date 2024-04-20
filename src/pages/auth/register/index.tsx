@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUtils } from "../../../hooks/useUtilities";
 import { useForm } from "react-hook-form";
 import { RegisterCredentials, useAuth } from "../../../store/useAuth";
 import { useMutation } from "react-query";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { countries, ocupationArea } = useUtils();
@@ -11,10 +12,14 @@ const Register = () => {
 
   const { register, reset, handleSubmit } = useForm<RegisterCredentials>();
 
+  const navigate = useNavigate();
+
   const { mutateAsync, data } = useMutation("registerUser", registerUser, {
     onSuccess: (data) => {
       if (!data.ERROR) {
         reset();
+        toast.success("Usuário criado e conectado com sucesso!");
+        navigate("/usuario/cursos");
       }
     },
   });

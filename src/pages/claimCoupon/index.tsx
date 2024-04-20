@@ -15,32 +15,28 @@ const ClaimCoupon = () => {
 
   const { register, handleSubmit } = useForm<ClaimCouponCredentials>();
 
-  const { mutateAsync, isLoading, isSuccess } = useMutation(
-    "claimCoupon",
-    claimCoupon,
-    {
-      onSuccess: (data) => {
-        if (data.STATE === 1) {
-          navigate("/");
-          toast.success(`${data.SUCCESS}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Flip,
-          });
-        }
+  const { mutateAsync, isLoading } = useMutation("claimCoupon", claimCoupon, {
+    onSuccess: (data) => {
+      if (data.STATE === 1) {
+        navigate("/");
+        toast.success(`${data.SUCCESS}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Flip,
+        });
+      }
 
-        if (data.STATE === 0) {
-          toast.error(`${data.ERROR}`);
-        }
-      },
-    }
-  );
+      if (data.STATE === 0) {
+        toast.error(`${data.ERROR}`);
+      }
+    },
+  });
 
   async function onSubmit(data: ClaimCouponCredentials) {
     await mutateAsync(data);
@@ -74,7 +70,7 @@ const ClaimCoupon = () => {
         </div>
         <button
           onClick={() => ref.current?.requestSubmit()}
-          disabled={isSuccess || isLoading}
+          disabled={isLoading}
           className="bg-red-500 p-2 rounded font-semibold text-white hover:bg-red-600 cursor-pointer"
         >
           Resgatar
