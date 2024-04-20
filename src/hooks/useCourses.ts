@@ -3,7 +3,7 @@ import { api } from "../config/api";
 import { ICourse, ICourses } from "../interfaces/ICourses";
 
 function useCourses() {
-  const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
+  const token = "";
 
   async function fetchMostRated(): Promise<ICourses> {
     try {

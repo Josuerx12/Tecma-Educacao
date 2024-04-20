@@ -105,7 +105,7 @@ interface Certificate {
 }
 
 function useUtils() {
-  const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
+  const token = "";
   const { user } = useAuth();
   const userToken = Cookies.get("refreshToken");
 

@@ -72,7 +72,7 @@ export const useAuth = create<States & Actions>((set) => {
       }
     },
     recovery: async (credentials: recoveryCredentials) => {
-      const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
+      const token = "";
       const credentialsFormData = new FormData();
       credentialsFormData.append("token", String(token));
       credentialsFormData.append("user_email", credentials.user_email);
@@ -92,7 +92,7 @@ export const useAuth = create<States & Actions>((set) => {
     getUser: async () => {
       const refreshToken = Cookies.get("refreshToken");
       const userId = Cookies.get("user");
-      const token = "10ddc14a0c24267b41c1fa2a81727b514ec9f857";
+      const token = "";
       const credentials = new FormData();
 
       credentials.append("token", String(token));
