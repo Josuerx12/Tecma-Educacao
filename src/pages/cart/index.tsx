@@ -10,7 +10,10 @@ const CartPage = () => {
   const { user } = useAuth();
   const { createCart } = useUtils();
 
-  const totalToPay = cart.reduce((acc, item) => acc + item.value, 0);
+  const totalToPay = cart.reduce(
+    (acc, item) => Number(acc) + Number(item.value),
+    0
+  );
 
   const { mutateAsync } = useMutation("createCart", createCart, {
     onSuccess: (data) => {
@@ -63,7 +66,7 @@ const CartPage = () => {
                       </div>
                     </td>
                     <td className="text-center border border-neutral-300">
-                      {item.value.toLocaleString("pt-BR", {
+                      {Number(item.value).toLocaleString("pt-BR", {
                         style: "currency",
                         currency: "BRL",
                       })}

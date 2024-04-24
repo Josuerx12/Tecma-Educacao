@@ -195,7 +195,7 @@ const CoursePage = () => {
                       courseName: data.COURSES[0].course_title,
                       courseId: String(data.COURSES[0].course_id),
                       courseImg: data.COURSES[0].course_image,
-                      duration: "em 30 dias",
+                      duration: "em 6 meses",
                       startAt: "Imediato",
                       value: data.COURSES[0].course_price,
                     });
