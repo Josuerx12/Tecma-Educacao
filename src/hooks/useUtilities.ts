@@ -259,10 +259,14 @@ function useUtils() {
   ): Promise<CreateCartPayload> {
     try {
       const formData = new FormData();
-      formData.append("token", token),
-        formData.append("course_id", credentials.course_id.toString());
+      formData.append("token", token);
+      formData.append("course_id", credentials.course_id.toString());
       formData.append("course_type", "4");
-      formData.append("course_plan", "12");
+      if (credentials.course_id[0] === "0") {
+        formData.append("course_plan", "12");
+      } else {
+        formData.append("course_plan", "6");
+      }
       formData.append("user_id", credentials.user_id);
 
       const payload = (await api.post("/api/buying/set-cart", formData)).data;

@@ -51,14 +51,6 @@ const CoursePage = () => {
     arrows: false,
   };
 
-  if (data) {
-    if (data.COURSES[0].course_hours <= 20) {
-      data.COURSES[0].course_price = 49.9;
-    } else {
-      data.COURSES[0].course_price = 197.0;
-    }
-  }
-
   const { addCart } = useCart();
 
   const navigate = useNavigate();
@@ -173,7 +165,7 @@ const CoursePage = () => {
             </Slider>
 
             <p className="text-3xl font-bold text-center text-green-900">
-              {data?.COURSES[0].course_price.toLocaleString("pt-BR", {
+              {Number(data?.COURSES[0]?.course_price).toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })}

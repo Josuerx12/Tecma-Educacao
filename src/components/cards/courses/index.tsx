@@ -2,14 +2,6 @@ import { ICourse } from "../../../interfaces/ICourses";
 import { FaStar } from "react-icons/fa";
 
 const CoursesCard = ({ course }: { course: ICourse }) => {
-  if (course.course_hours < 20) {
-    course.course_price = 49.9;
-  } else if (course.course_hours > 20 && course.course_hours <= 80) {
-    course.course_price = 197.0;
-  } else {
-    course.course_price = 499;
-  }
-
   return (
     <a
       href={`/cursos/${course.course_category_slug}/${course.course_id}`}
@@ -32,7 +24,7 @@ const CoursesCard = ({ course }: { course: ICourse }) => {
 
         {course.course_price && (
           <p className="font-bold text-2xl text-green-900 ">
-            {course.course_price.toLocaleString("pt-BR", {
+            {Number(course?.course_price)?.toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
             })}
